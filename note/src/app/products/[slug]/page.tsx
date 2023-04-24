@@ -12,6 +12,7 @@ const page = ({ params }: Props) => {
 
 export default page;
 
+// 페이지 미리 생성
 export const generatorStaticParams = () => {
   const products = ["pants", "skirt"];
   return products.map((product) => ({
