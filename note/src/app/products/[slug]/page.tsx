@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+
 type Props = {
   params: {
     slug: string;
@@ -6,7 +8,9 @@ type Props = {
 
 const page = ({ params }: Props) => {
   console.log(params);
-
+  if (params.slug === "nothing") {
+    notFound();
+  }
   return <div>{params.slug}동적라우팅</div>;
 };
 

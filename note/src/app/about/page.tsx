@@ -1,5 +1,5 @@
-const index = (): JSX.Element => {
-  return <div>???</div>;
+const page = (): JSX.Element => {
+  return <div>111111111111111</div>;
 };
 
-export default index;
+export default page;
