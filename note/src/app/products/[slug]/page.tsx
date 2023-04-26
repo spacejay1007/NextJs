@@ -6,11 +6,26 @@ type Props = {
   };
 };
 
+export function generateMetadata({ params }: Props) {
+  return {
+    title: `제품의 이름 : ${params.slug}`,
+  };
+}
+
 const page = ({ params }: Props) => {
   console.log(params);
   if (params.slug === "nothing") {
     notFound();
   }
+
+  if (params.slug === "pants") {
+    return <div>pants~~~!!!</div>;
+  }
+
+  if (params.slug === "skirt") {
+    return <div>skirt~~~!!!</div>;
+  }
+
   return <div>{params.slug}동적라우팅</div>;
 };
 
