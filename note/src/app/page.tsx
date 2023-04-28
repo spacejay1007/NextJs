@@ -1,6 +1,9 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
+import { Counter } from "../components/Counter";
+import os from "os"; // node APIs
+
 // export const metadata: Metadata = {
 //   title: "Home",
 //   description: "Welecome to Next Js",
@@ -8,5 +11,12 @@ import type { Metadata } from "next";
 
 export default function Home() {
   // notFound();
-  return <div>zzzzzzzzzzzzz</div>;
+  console.log(os.hostname());
+  console.log("안녕 - Server");
+  return (
+    <div>
+      <h1>안녕</h1>
+      <Counter />
+    </div>
+  );
 }
