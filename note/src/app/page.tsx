@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
-import { Counter } from "../components/Counter";
 import os from "os"; // node APIs
+import { Counter } from "../components/Counter";
 
 // export const metadata: Metadata = {
 //   title: "Home",

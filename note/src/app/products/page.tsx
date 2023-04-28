@@ -1,20 +1,27 @@
+import { MeoArticle } from "@/components/MeoArticle";
+import { getProducts, T_Product } from "@/service/products";
 import Link from "next/link";
 
-const products = ["pants", "shirt", "shoes", "skirt"];
+// 기본적으론 false SSG ,  0 으로 하면 SSR 처럼 요청이 올때마다 , 몇초마다 ISR 할건지 작성
+// export const revalidate = 3;
 
-const page = ({ children }: any) => {
+const ProductsPage = async ({ children }: any) => {
+  // 서버 파일 (데이터베이스) 에 있는 제품의 리스트를 읽어와서, 그걸 보여줌
+  const products = await getProducts();
+
   return (
     <div>
       <h1>Product Page</h1>
       <ul>
-        {products.map((item: string, idx: number) => {
+        {products.map((item: T_Product, idx: number) => {
           return (
             <li key={idx}>
-              <Link href={`/products/${item}`}>{item}</Link>
+              <Link href={`/products/${item.id}`}>{item.name}</Link>
             </li>
           );
         })}
       </ul>
+      <MeoArticle />
       {/* <li>
         <Link href="/products/pants">Pants </Link>
       </li>
@@ -25,4 +32,4 @@ const page = ({ children }: any) => {
   );
 };
 
-export default page;
+export default ProductsPage;
