@@ -1,5 +1,7 @@
+import { GoProductsButton } from "@/components/GoProductsButton";
 import { getProduct, getProducts, T_Product } from "@/service/products";
-import { notFound } from "next/navigation";
+import Image from "next/image";
+import { notFound, redirect } from "next/navigation";
 
 // // 기본적으론 false SSG ,  0 으로 하면 SSR 처럼 요청이 올때마다 , 몇초마다 ISR 할건지 작성
 // export const revalidate = 3;
@@ -25,10 +27,23 @@ const ProductPage = async ({ params: { slug } }: Props) => {
   // }
 
   if (!product) {
-    notFound();
+    redirect("/products");
+    // notFound();
   }
 
-  return <div>{product.name}동적라우팅</div>;
+  return (
+    <div>
+      <div>{product.name}동적라우팅</div>
+      <Image
+        src={`/images/${product.image}`}
+        alt={product.name}
+        width={300}
+        height={300}
+      />
+      {/* <button onClick={()=>{}}>제품 페이지로 이동</button> */}
+      <GoProductsButton />
+    </div>
+  );
 };
 
 export default ProductPage;

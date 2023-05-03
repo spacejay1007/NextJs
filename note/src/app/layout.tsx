@@ -1,6 +1,11 @@
 import Link from "next/link";
 import "./globals.css";
 import styles from "./layout.module.css";
+import { Inter, Open_Sans, Nanum_Gothic } from "next/font/google"; // page 보다는 font는 최상의 경로에서 사용해주는게 좋다
+
+const inter = Inter({ subsets: ["latin"] });
+const sans = Open_Sans({ subsets: ["latin"] });
+const gothic = Nanum_Gothic({ weight: "700", subsets: ["latin"] });
 
 import type { Metadata } from "next";
 
@@ -18,10 +23,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={sans.className}>
       <body>
         <header className={styles.header}>
-          <h1>Demo Note App</h1>
+          <h1 className={gothic.className}>Demo Note App</h1>
           <nav className={styles.nav}>
             <Link href="/contact">Contact</Link>
             <Link href="/about">About</Link>

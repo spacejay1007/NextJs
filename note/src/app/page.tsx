@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-
 import os from "os"; // node APIs
 import { Counter } from "../components/Counter";
 

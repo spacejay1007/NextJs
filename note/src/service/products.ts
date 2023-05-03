@@ -7,6 +7,7 @@ export type T_Product = {
   id: string;
   name: string;
   price: number;
+  image: string;
 };
 
 export const getProducts = async (): Promise<T_Product[]> => {
