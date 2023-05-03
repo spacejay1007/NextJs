@@ -14,7 +14,7 @@ export default function Home() {
   console.log("안녕 - Server");
   return (
     <div>
-      <h1>홈페이지 버젼 1</h1>
+      <h1>홈페이지 버젼 2</h1>
       <Counter />
     </div>
   );
