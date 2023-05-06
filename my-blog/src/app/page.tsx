@@ -33,15 +33,15 @@ export default async function Home() {
 
       {/* <CtMainFeaturedPost /> */}
       <div className="font-bold text-lg">Featured Posts</div>
-      <div className="flex">
+      <div className="grid grid-cols-3 gap-3">
         {posts.map((item: T_Post, idx: number) => {
           return (
-            <Link href={`/posts/${item.id}`} key={idx}>
+            <Link href={`/posts/${item.id}`} key={idx} className="">
               <div className="rounded border-inherit border">
-                <Image src={"/image"} alt="image" width={200} height={200} />
-                <div>날짜</div>
-                <div>title</div>
-                <div>desc</div>
+                <Image src={"/image"} alt="image" width={430} height={300} />
+                <div>{item.date}</div>
+                <div>{item.title}</div>
+                <div>{item.desc}</div>
               </div>
             </Link>
           );

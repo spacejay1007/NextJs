@@ -12,6 +12,7 @@ export type T_Post = {
 export const getPosts = async (): Promise<T_Post[]> => {
   const filePath = path.join(process.cwd(), "data", "post.json");
   const data = await fs.readFile(filePath, "utf-8");
+
   return JSON.parse(data);
 };
 
