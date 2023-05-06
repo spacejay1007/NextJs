@@ -1,5 +1,5 @@
-const AboutPage = (): JSX.Element => {
-  return <div> About PAge</div>;
+const page = (): JSX.Element => {
+  return <div>111111111111111</div>;
 };
 
-export default AboutPage;
+export default page;

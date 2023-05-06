@@ -1,0 +1,13 @@
+.nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.nav a {
+  padding: 0 8px;
+}
+
+.product {
+  padding: 16px;
+}
