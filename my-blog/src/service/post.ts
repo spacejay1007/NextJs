@@ -1,5 +1,6 @@
+import { readFile } from "fs/promises";
 import path from "path";
-import { promises as fs } from "fs";
+// import { promises as fs, readFile } from "fs";
 
 export type T_Post = {
   id: string;
@@ -7,21 +8,17 @@ export type T_Post = {
   desc: string;
   date: Date;
   image: string;
-<<<<<<< HEAD
-  tag: string;
-=======
   category: string;
->>>>>>> ffa17766e11963b8303c2af20edd5a8239d9c754
 };
 
 export const getPosts = async (): Promise<T_Post[]> => {
   const filePath = path.join(process.cwd(), "data", "post.json");
-  const data = fs
-    .readFile(filePath, "utf-8")
+  // const data = readFile(filePath, "utf-8").then<T_Post[]>(JSON.parse)
+  //   .then((posts) => posts.sort((a, b) => (a.date > a.date ? -1 : 1)));
+
+  return readFile(filePath, "utf-8")
     .then<T_Post[]>(JSON.parse)
     .then((posts) => posts.sort((a, b) => (a.date > a.date ? -1 : 1)));
-
-  return data;
   // return JSON.parse(data);
 };
 

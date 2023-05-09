@@ -1,13 +1,13 @@
 import Image from "next/image";
 import { HomeContactButton } from "@/components/main/HomeContactButton";
-import { CtMainFeaturedPost } from "@/components/main/posts/CtMainFeaturedPost";
 import { getPosts, T_Post } from "@/service/post";
 import Link from "next/link";
+import { MainFeaturedPost } from "@/components/main/posts/MainFeaturedPost";
 
 // const inter = Inter({ subsets: ["latin"] });
 
 export default async function Home() {
-  const posts = await getPosts();
+  // const posts = await getPosts();
 
   return (
     <div className="">
@@ -29,11 +29,14 @@ export default async function Home() {
         </div>
         <HomeContactButton />
       </div>
+      {/* @ts-expect-error Async Server Component */}
+      <MainFeaturedPost />
 
-      {/* <div className="font-bold text-lg">Featured Posts</div> */}
+      {/* 
+      <div className="font-bold text-lg">Featured Posts</div>
       <CtMainFeaturedPost />
 
-      {/* <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-3 gap-3">
         {posts.map((item: T_Post, idx: number) => {
           return (
             <Link href={`/posts/${item.id}`} key={idx} className="">
@@ -51,9 +54,8 @@ export default async function Home() {
             </Link>
           );
         })}
-      </div> */}
-
-      <div></div>
+      </div>
+     */}
     </div>
   );
 }

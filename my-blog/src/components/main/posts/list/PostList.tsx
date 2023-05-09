@@ -1,9 +1,8 @@
 "use client";
 import { getPosts } from "@/service/post";
 import Image from "next/image";
-import React from "react";
 
-export const PostList: React.FC = (): JSX.Element => {
+export const PostList = () => {
   // console.log(getPosts());
   return (
     <div className="rounded border-inherit border ">
