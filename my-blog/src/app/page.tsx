@@ -1,11 +1,10 @@
 import Image from "next/image";
-import { Inter } from "next/font/google";
 import { HomeContactButton } from "@/components/main/HomeContactButton";
 import { CtMainFeaturedPost } from "@/components/main/posts/CtMainFeaturedPost";
 import { getPosts, T_Post } from "@/service/post";
 import Link from "next/link";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export default async function Home() {
   const posts = await getPosts();
@@ -31,22 +30,28 @@ export default async function Home() {
         <HomeContactButton />
       </div>
 
-      {/* <CtMainFeaturedPost /> */}
-      <div className="font-bold text-lg">Featured Posts</div>
-      <div className="grid grid-cols-3 gap-3">
+      {/* <div className="font-bold text-lg">Featured Posts</div> */}
+      <CtMainFeaturedPost />
+
+      {/* <div className="grid grid-cols-3 gap-3">
         {posts.map((item: T_Post, idx: number) => {
           return (
             <Link href={`/posts/${item.id}`} key={idx} className="">
-              <div className="rounded border-inherit border">
+              <div className="rounded border-inherit border ">
                 <Image src={"/image"} alt="image" width={430} height={300} />
-                <div>{item.date}</div>
-                <div>{item.title}</div>
-                <div>{item.desc}</div>
+                <div className="p-3">
+                  <div className="text-right text-sm">{item.date}</div>
+                  <div className="flex flex-col items-center">
+                    <div>{item.title}</div>
+                    <div>{item.desc}</div>
+                    <div>{item.tag}</div>
+                  </div>
+                </div>
               </div>
             </Link>
           );
         })}
-      </div>
+      </div> */}
 
       <div></div>
     </div>

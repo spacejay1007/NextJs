@@ -1,8 +1,10 @@
+import { Header } from "@/components/header/Header";
 import "./globals.css";
-import { Inter } from "next/font/google";
 import Link from "next/link";
+import { Footer } from "@/components/footer/Footer";
+import { Open_Sans } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Open_Sans({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Jay Blog Welcome",
@@ -15,26 +17,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <div className="w-full px-10">
-          <header className="flex justify-between items-center py-5">
-            <h1 className="text-2xl font-bold">{`Jay's Blog`}</h1>
-            <nav className="">
-              <Link className="pr-2" href={"/"}>
-                home
-              </Link>
-              <Link className="pr-2" href={"/about"}>
-                About
-              </Link>
-              <Link className="pr-2" href={"/posts"}>
-                posts
-              </Link>
-              <Link href={"/contact"}>Contact</Link>
-            </nav>
-          </header>
-          {children}
-        </div>
+    <html lang="en" className={inter.className}>
+      <body className="flex flex-col w-full max-w-screen-2xl mx-auto">
+        {/* <div className="w-full px-10"> */}
+        <Header />
+        <main className="grow bg-sky-400">{children}</main>
+        {/* <footer className="flex justify-center items-center"> */}
+        <Footer />
+        {/* </footer> */}
+        {/* </div> */}
       </body>
     </html>
   );
