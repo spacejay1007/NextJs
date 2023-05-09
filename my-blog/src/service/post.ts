@@ -7,6 +7,7 @@ export type T_Post = {
   desc: string;
   date: string;
   image: string;
+  category: string;
 };
 
 export const getPosts = async (): Promise<T_Post[]> => {

@@ -4,27 +4,31 @@
     "title": "호이",
     "desc": "2023년 동안 나온 에러 기록",
     "date": "2023-12-30",
-    "image": "tshirt.jpg"
+    "image": "tshirt.jpg",
+    "category": "tshirt.jpg"
   },
   {
     "id": "3",
     "title": "공부한 내용",
     "desc": "2023년 동안 배운 기록",
     "date": "2023-12-31",
-    "image": "jeans.jpg"
+    "image": "jeans.jpg",
+    "category": "tshirt.jpg"
   },
   {
     "id": "2",
     "title": "에러",
     "desc": "2023년 동안 나온 에러 기록",
     "date": "2023-12-30",
-    "image": "tshirt.jpg"
+    "image": "tshirt.jpg",
+    "category": "tshirt.jpg"
   },
   {
     "id": "1",
     "title": "다시 공부해야한다",
     "desc": "2023년에 배웠지만 다시 복습해야 할 내용",
     "date": "2023-12-29",
-    "image": "shoes.jpg"
+    "image": "shoes.jpg",
+    "category": "tshirt.jpg"
   }
 ]
