@@ -7,7 +7,11 @@ export type T_Post = {
   desc: string;
   date: Date;
   image: string;
+<<<<<<< HEAD
   tag: string;
+=======
+  category: string;
+>>>>>>> ffa17766e11963b8303c2af20edd5a8239d9c754
 };
 
 export const getPosts = async (): Promise<T_Post[]> => {
