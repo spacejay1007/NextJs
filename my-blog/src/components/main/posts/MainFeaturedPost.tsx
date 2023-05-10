@@ -1,15 +1,26 @@
 "use client";
 
-import { PostList } from "./list/PostList";
-import { T_Post, getPosts } from "@/service/post";
+import { getAllPosts, T_Post } from "@/service/post";
+import PostList from "./list/PostList";
 
-export const MainFeaturedPost = async () => {
-  const posts = await getPosts();
+// export const MainFeaturedPost = async () => {
+//   return (
+//     <section>
+//       <h2 className="font-bold text-lg">Featured Posts</h2>
+//       <PostList />
+//     </section>
+//   );
+// };
+
+const MainFeaturedPost = async () => {
+  const posts = await getAllPosts();
   console.log(posts);
   return (
-    <section>
-      <h2 className="font-bold text-lg">Featured Posts</h2>
+    <div>
+      <h2>Featured Posts</h2>
       <PostList />
-    </section>
+    </div>
   );
 };
+
+export default MainFeaturedPost;

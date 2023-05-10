@@ -1,16 +1,16 @@
 import Image from "next/image";
 import { HomeContactButton } from "@/components/main/HomeContactButton";
-import { getPosts, T_Post } from "@/service/post";
+import { T_Post } from "@/service/post";
 import Link from "next/link";
-import { MainFeaturedPost } from "@/components/main/posts/MainFeaturedPost";
+import MainFeaturedPost from "@/components/main/posts/MainFeaturedPost";
 
 // const inter = Inter({ subsets: ["latin"] });
 
-export default async function Home() {
+export default function Home() {
   // const posts = await getPosts();
 
   return (
-    <div className="">
+    <main className="">
       <div className="w-full justify-center flex flex-col items-center">
         <Image
           className="rounded-full"
@@ -56,6 +56,6 @@ export default async function Home() {
         })}
       </div>
      */}
-    </div>
+    </main>
   );
 }
