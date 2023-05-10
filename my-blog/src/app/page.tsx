@@ -5,12 +5,13 @@ import Link from "next/link";
 import MainFeaturedPost from "@/components/main/posts/MainFeaturedPost";
 
 // const inter = Inter({ subsets: ["latin"] });
+// {/* @ts-expect-error Async Server Component */}
 
 export default function Home() {
   // const posts = await getPosts();
 
   return (
-    <main className="">
+    <div>
       <div className="w-full justify-center flex flex-col items-center">
         <Image
           className="rounded-full"
@@ -29,8 +30,8 @@ export default function Home() {
         </div>
         <HomeContactButton />
       </div>
-      {/* @ts-expect-error Async Server Component */}
-      <MainFeaturedPost />
+
+      {/* <MainFeaturedPost /> */}
 
       {/* 
       <div className="font-bold text-lg">Featured Posts</div>
@@ -56,6 +57,6 @@ export default function Home() {
         })}
       </div>
      */}
-    </main>
+    </div>
   );
 }

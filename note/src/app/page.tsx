@@ -15,6 +15,7 @@ export default function Home() {
   return (
     <div>
       <h1>홈페이지 버젼 2</h1>
+      {/* @ts-expect-error Async Server Component */}
       <Counter />
     </div>
   );

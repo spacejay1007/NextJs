@@ -11,6 +11,20 @@ const nextConfig = {
       },
     ],
   },
+  reactStrictMode: false,
+  webpack5: true,
+  webpack: (config) => {
+    config.resolve.fallback = {
+      fs: false,
+      net: false,
+      dns: false,
+      child_process: false,
+      tls: false,
+    };
+
+    return config;
+  },
+
   async redirects() {
     return [
       //  영원히 사라진 페이지

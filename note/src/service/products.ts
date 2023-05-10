@@ -10,8 +10,10 @@ export type T_Product = {
   image: string;
 };
 
-export const getProducts = async (): Promise<T_Product[]> => {
-  const filePath = path.join(process.cwd(), "data", "product.json"); // process.cwd() process 경로를 받아온다
+// : Promise<T_Product[]>
+export const getProducts = async () => {
+  // process.cwd() process 경로를 받아온다
+  const filePath = path.join(process.cwd(), "data", "product.json");
   const data = await fs.readFile(filePath, "utf-8");
   // ["pants", "shirt", "shoes", "skirt", "dress"];
   return JSON.parse(data);
