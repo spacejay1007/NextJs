@@ -5,7 +5,7 @@
     "desc": "2023년 동안 나온 에러 기록",
     "date": "2023-12-30",
     "image": "tshirt.jpg",
-    "category": "tshirt.jpg"
+    "category": "javascript"
   },
   {
     "id": "3",
@@ -13,7 +13,7 @@
     "desc": "2023년 동안 배운 기록",
     "date": "2023-12-31",
     "image": "jeans.jpg",
-    "category": "tshirt.jpg"
+    "category": "typeScript"
   },
   {
     "id": "2",
@@ -21,7 +21,7 @@
     "desc": "2023년 동안 나온 에러 기록",
     "date": "2023-12-30",
     "image": "tshirt.jpg",
-    "category": "tshirt.jpg"
+    "category": "study"
   },
   {
     "id": "1",
@@ -29,6 +29,6 @@
     "desc": "2023년에 배웠지만 다시 복습해야 할 내용",
     "date": "2023-12-29",
     "image": "shoes.jpg",
-    "category": "tshirt.jpg"
+    "category": "korea"
   }
 ]

@@ -30,8 +30,8 @@ export default function Home() {
         </div>
         <HomeContactButton />
       </div>
-
-      {/* <MainFeaturedPost /> */}
+      {/* @ts-expect-error Async Server Component */}
+      <MainFeaturedPost />
 
       {/* 
       <div className="font-bold text-lg">Featured Posts</div>
