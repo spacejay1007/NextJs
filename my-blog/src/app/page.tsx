@@ -11,7 +11,7 @@ export default function Home() {
   // const posts = await getPosts();
 
   return (
-    <div>
+    <div className="h-full">
       <div className="w-full justify-center flex flex-col items-center">
         <Image
           className="rounded-full"
@@ -32,31 +32,6 @@ export default function Home() {
       </div>
       {/* @ts-expect-error Async Server Component */}
       <MainFeaturedPost />
-
-      {/* 
-      <div className="font-bold text-lg">Featured Posts</div>
-      <CtMainFeaturedPost />
-
-      <div className="grid grid-cols-3 gap-3">
-        {posts.map((item: T_Post, idx: number) => {
-          return (
-            <Link href={`/posts/${item.id}`} key={idx} className="">
-              <div className="rounded border-inherit border ">
-                <Image src={"/image"} alt="image" width={430} height={300} />
-                <div className="p-3">
-                  <div className="text-right text-sm">{item.date}</div>
-                  <div className="flex flex-col items-center">
-                    <div>{item.title}</div>
-                    <div>{item.desc}</div>
-                    <div>{item.tag}</div>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          );
-        })}
-      </div>
-     */}
     </div>
   );
 }

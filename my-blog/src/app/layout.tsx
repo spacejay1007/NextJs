@@ -18,14 +18,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
-      <body className="flex flex-col w-full max-w-screen-2xl mx-auto">
-        {/* <div className="w-full px-10"> */}
+      <body className="flex flex-col w-full max-w-screen-2xl mx-auto h-full">
         <Header />
         <main className="grow">{children}</main>
-        {/* <footer className="flex justify-center items-center"> */}
         <Footer />
-        {/* </footer> */}
-        {/* </div> */}
       </body>
     </html>
   );

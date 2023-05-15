@@ -8,8 +8,8 @@ const MainFeaturedPost = async () => {
   const posts = require("../../../../public/data/post.json");
 
   return (
-    <div>
-      <h2>Featured Posts</h2>
+    <div className="">
+      <h2 className="text-2xl font-bold my-2">Featured Posts</h2>
       <PostList posts={posts} />
     </div>
   );

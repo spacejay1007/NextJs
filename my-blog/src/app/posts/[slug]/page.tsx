@@ -1,4 +1,4 @@
-import { getPost } from "@/service/post";
+import { getAllPosts, T_Post } from "@/service/post";
 
 type Props = {
   params: {
@@ -7,15 +7,20 @@ type Props = {
 };
 
 const postSlugPage = async ({ params }: Props) => {
-  console.log(params);
-  const post = await getPost(params.slug);
-  console.log(post);
+  const allPost = await getAllPosts();
+  const post = allPost.find((item: T_Post) => {
+    return item.id === params.slug;
+  });
 
   return (
     <div>
-      <div>{post?.image}</div>
-      <div>{post?.title}</div>
-      <div>{post?.desc}</div>
+      {post && (
+        <>
+          <div>{post.image}</div>
+          <div>{post.title}</div>
+          <div>{post.desc}</div>
+        </>
+      )}
     </div>
   );
 };

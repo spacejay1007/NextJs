@@ -7,7 +7,7 @@ export const HomeContactButton: React.FC = (): JSX.Element => {
   const navigate = useRouter();
   return (
     <button
-      className="rounded border-inherit border p-1 bg"
+      className="rounded border-inherit border p-1 bg-yellow-300"
       onClick={() => {
         navigate.push("/contact");
       }}
