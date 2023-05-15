@@ -5,25 +5,22 @@ import Link from "next/link";
 
 type T_Props = {
   item: T_Post;
-  idx: number;
 };
 
 const PostsCard: React.FC<T_Props> = ({
   item: { category, date, desc, id, image, title },
-  idx,
 }): JSX.Element => {
   // const getPost = await getPosts();
   return (
-    <Link href={`/posts/${id}`} key={idx + id} className="">
+    <Link href={`/posts/${id}`} key={id} className="">
       <article className="rounded-md overflow-hidden shadow-lg  ">
         <Image
           src={`/img/${image}`}
           alt="image"
           width={430}
-          height={300}
-          className="w-full"
+          height={200}
+          className="w-full max-h-48"
         />
-        {/* <div className="text-right text-sm">{}</div> */}
         <div className="flex flex-col items-center p-4">
           {/* date형식은 바로 넣질 못하고 toString() 으로 정의해줘야한다. */}
           <div className="self-end">{date.toString()}</div>

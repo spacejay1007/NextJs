@@ -3,7 +3,7 @@ import path from "path";
 // import { promises as fs, readFile } from "fs";
 
 export type T_Post = {
-  id: string;
+  id: number;
   title: string;
   desc: string;
   date: Date;

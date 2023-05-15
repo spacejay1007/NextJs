@@ -1,11 +1,9 @@
-"use client";
-
-import { getAllPosts, T_Post } from "@/service/post";
+import { getAllPosts } from "@/service/post";
 import PostList from "./list/PostList";
 
 const MainFeaturedPost = async () => {
-  // const posts = await getAllPosts();
-  const posts = require("../../../../public/data/post.json");
+  const posts = await getAllPosts();
+  // const posts = require("../../../../public/data/post.json");
 
   return (
     <div className="">

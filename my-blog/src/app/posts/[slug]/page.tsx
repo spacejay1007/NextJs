@@ -9,7 +9,7 @@ type Props = {
 const postSlugPage = async ({ params }: Props) => {
   const allPost = await getAllPosts();
   const post = allPost.find((item: T_Post) => {
-    return item.id === params.slug;
+    return String(item.id) === params.slug;
   });
 
   return (

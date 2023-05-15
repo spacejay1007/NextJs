@@ -1,6 +1,13 @@
-import React from "react";
+import { getAllPosts } from "@/service/post";
 import { Mainpost } from "./list/Mainpost";
 
-export const CtMainPosts: React.FC = (): JSX.Element => {
-  return <Mainpost />;
+export const CtMainPosts = async () => {
+  const posts = await getAllPosts();
+
+  return (
+    <>
+      {/* @ts-expect-error Async Server Component */}
+      <Mainpost />
+    </>
+  );
 };
