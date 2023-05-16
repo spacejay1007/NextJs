@@ -9,6 +9,7 @@ const PostsPage = () => {
   return (
     <div>
       <div>하이</div>
+      {/* @ts-expect-error Async Server Component */}
       <Mainpost />
     </div>
   );

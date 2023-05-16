@@ -12,6 +12,7 @@ export const Header: React.FC = (): JSX.Element => {
           <Link href={"/"}>home</Link>
           <Link href={"/about"}>About</Link>
           <Link href={"/posts"}>posts</Link>
+          <Link href={"/posting"}>posting</Link>
           <Link href={"/contact"}>Contact</Link>
         </nav>
       </header>
