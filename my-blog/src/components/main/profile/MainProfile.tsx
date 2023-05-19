@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import React from "react";
-import { HomeContactButton } from "../HomeContactButton";
+import { HomeContactButton } from "../eventComponent/HomeContactButton";
 
 export const MainProfile: React.FC = (): JSX.Element => {
   return (

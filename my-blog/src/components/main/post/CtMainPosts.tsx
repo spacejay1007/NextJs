@@ -1,5 +1,5 @@
 import { getAllPosts } from "@/service/post";
-import { Mainpost } from "./list/Mainpost";
+import { Mainpost } from "./Mainpost";
 
 export const CtMainPosts = async () => {
   const posts = await getAllPosts();

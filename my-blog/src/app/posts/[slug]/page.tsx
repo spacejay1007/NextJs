@@ -1,3 +1,4 @@
+import { PrevNext } from "@/components/main/post/detailPost/PrevNext";
 import { getAllPosts, T_Post } from "@/service/post";
 
 type Props = {
@@ -12,15 +13,16 @@ const postSlugPage = async ({ params }: Props) => {
     return String(item.id) === params.slug;
   });
 
+  console.log(
+    allPost.find((item: T_Post) => {
+      post?.id;
+    })
+  );
+
   return (
     <div>
-      {post && (
-        <>
-          <div>{post.image}</div>
-          <div>{post.title}</div>
-          <div>{post.desc}</div>
-        </>
-      )}
+      {/* @ts-expect-error Async Server Component */}
+      <PrevNext post={post} />
     </div>
   );
 };

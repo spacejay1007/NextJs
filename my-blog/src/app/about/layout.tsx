@@ -1,4 +1,4 @@
-import { HomeContactButton } from "@/components/main/HomeContactButton";
+import { HomeContactButton } from "@/components/main/eventComponent/HomeContactButton";
 import { MainProfile } from "@/components/main/profile/MainProfile";
 import Image from "next/image";
 

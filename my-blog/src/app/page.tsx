@@ -1,4 +1,4 @@
-import MainFeaturedPost from "@/components/main/posts/MainFeaturedPost";
+import MainFeaturedPost from "@/components/main/mainPost/MainFeaturedPost";
 import { MainProfile } from "@/components/main/profile/MainProfile";
 
 // const inter = Inter({ subsets: ["latin"] });

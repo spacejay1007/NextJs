@@ -1,5 +1,5 @@
 import { getAllPosts, T_Post } from "@/service/post";
-import { PostList } from "../postList/PostList";
+import { PostList } from "./postList/PostList";
 
 type Props = {
   posts: T_Post[];

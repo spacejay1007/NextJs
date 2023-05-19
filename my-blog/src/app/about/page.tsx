@@ -1,4 +1,4 @@
-import { HomeContactButton } from "@/components/main/HomeContactButton";
+import { HomeContactButton } from "@/components/main/eventComponent/HomeContactButton";
 import Image from "next/image";
 
 const AboutPage = () => {
