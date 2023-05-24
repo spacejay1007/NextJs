@@ -1,4 +1,4 @@
-import { getAllPosts } from "@/service/post";
+import { T_Post, getAllPosts } from "@/service/post";
 import PostList from "./list/PostList";
 
 const MainFeaturedPost = async () => {

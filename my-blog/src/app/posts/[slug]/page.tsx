@@ -13,12 +13,6 @@ const postSlugPage = async ({ params }: Props) => {
     return String(item.id) === params.slug;
   });
 
-  console.log(
-    allPost.find((item: T_Post) => {
-      post?.id;
-    })
-  );
-
   return (
     <div>
       {/* @ts-expect-error Async Server Component */}

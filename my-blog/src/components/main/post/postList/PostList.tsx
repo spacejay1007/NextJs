@@ -2,7 +2,7 @@
 import { T_Post } from "@/service/post";
 import React, { useState } from "react";
 import { Categories } from "../category/Categories";
-import PostsCard from "../card/PostsCard";
+import PostsCard from "./PostsCard";
 
 type Props = {
   posts: T_Post[];
