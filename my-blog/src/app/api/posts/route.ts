@@ -22,3 +22,12 @@ export const POST = async (req: Request, res: Response) => {
   writeFile(filePath, JSON.stringify(arr));
   return NextResponse.json({ message: "" });
 };
+
+export const DELETE = async (req: Request) => {
+  const postDelete = await req.json();
+  const filePath = path.join(process.cwd(), "public", "data", "post.json");
+
+  if (!postDelete) return NextResponse.json({ message: "Missing Data" });
+
+  return NextResponse.json({ message: "" });
+};
