@@ -1,26 +1,54 @@
 "use client";
 import { T_Post } from "@/service/post";
 import axios from "axios";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
-export const PrevNext = async ({ post }: { post: T_Post }) => {
-  const deleteHandler = async () => {
-    await axios.delete("/api/posts").then((res) => {
-      console.log(res);
-    });
-  };
+export const PrevNext = ({
+  post,
+  type,
+}: {
+  // post: { postId: number; postTitle: string; image: string };
+  post: T_Post;
+  type: "prev" | "next";
+}) => {
+  const { id, desc, image, title } = post;
   return (
-    <div>
-      <div>
-        <button onClick={() => deleteHandler()}>post삭제</button>
-      </div>
-      {post && (
-        <>
-          <div>{post.image}</div>
-          <div>{post.title}</div>
-          <div>{post.desc}</div>
-        </>
-      )}
-    </div>
+    // <div style={{ width: "50%", border: "1px solid black" }}>
+    <>
+      <Link
+        href={`/posts/${id}`}
+        style={{ position: "relative", width: "100%" }}
+      >
+        <Image
+          src={`/img/${image}`}
+          alt={title}
+          width={150}
+          height={100}
+          style={{ width: "100%", opacity: "40%" }}
+        ></Image>
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          {type === "prev" && <FaArrowLeft />}
+          <div style={{ width: "100%" }}>
+            <h3>{title}</h3>
+            <p>{desc}</p>
+          </div>
+          {type === "next" && <FaArrowRight />}
+        </div>
+      </Link>
+    </>
   );
 };

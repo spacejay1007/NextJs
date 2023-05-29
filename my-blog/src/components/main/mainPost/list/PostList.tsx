@@ -1,6 +1,5 @@
 "use client";
 import { T_Post } from "@/service/post";
-import Image from "next/image";
 import PostsCard from "../../post/postList/PostsCard";
 
 type Props = {
