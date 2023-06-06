@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/common/button/Button";
 import { Input } from "@/common/input/Input";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -44,7 +45,6 @@ const MainPosting = (): JSX.Element => {
         <Input
           styles={{ width: 400, border: "1px solid black" }}
           onChange={(e) => {
-            console.log(e.target.value);
             setValueState({
               title: e.target.value,
               desc: valueState.desc,
@@ -84,13 +84,11 @@ const MainPosting = (): JSX.Element => {
         />
       </div>
       <div>
-        <button
-          onClick={() => {
-            postHandler();
-          }}
-        >
-          저장
-        </button>
+        <Button
+          onClick={() => postHandler()}
+          text="저장"
+          styles={{ marginTop: 20 }}
+        ></Button>
       </div>
     </div>
   );

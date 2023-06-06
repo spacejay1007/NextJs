@@ -1,5 +1,3 @@
-import {} from "styled-components";
-
 type Margin = {
   margin?: string;
   marginTop?: number;

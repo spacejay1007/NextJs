@@ -39,9 +39,7 @@ export const InputEl = styled.input<{ type: string }>`
   font-family: inherit;
 `;
 
-export const Container = styled.div<
-  Styles & { readOnly?: boolean; disabled: boolean }
->`
+export const Container = styled.div<Styles & { disabled: boolean }>`
   position: relative;
   height: ${({ height }) => {
     if (typeof height === "string") return height;
@@ -85,7 +83,7 @@ export const Container = styled.div<
     }
   }
 
-  ${({ disabled, readOnly }) => {
+  ${({ disabled }) => {
     if (disabled) {
       return css`
         ${InputEl} {
@@ -95,13 +93,6 @@ export const Container = styled.div<
       `;
     }
 
-    if (readOnly) {
-      return css`
-        ${InputEl} {
-          background-color: #f5f5f5;
-        }
-      `;
-    }
     return "";
   }}
 `;
@@ -125,7 +116,6 @@ export const Input: React.FC<I_InputProps> = (props): JSX.Element => {
   };
 
   return (
-    // <div {...props.styles} className="my_blog__input__ct">
     <Container
       {...props.styles}
       disabled={!!props.disabled}
@@ -139,6 +129,5 @@ export const Input: React.FC<I_InputProps> = (props): JSX.Element => {
         onChange={onChangeHandler}
       />
     </Container>
-    // </div>
   );
 };
