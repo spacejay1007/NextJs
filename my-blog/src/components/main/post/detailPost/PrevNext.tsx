@@ -26,9 +26,9 @@ export const PrevNext = ({
         <Image
           src={`/img/${image}`}
           alt={title}
-          width={150}
+          width={100}
           height={100}
-          style={{ width: "100%", opacity: "40%" }}
+          style={{ width: "100%", height: 30, opacity: "40%" }}
         ></Image>
         <div
           style={{

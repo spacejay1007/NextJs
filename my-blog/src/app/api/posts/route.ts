@@ -3,6 +3,7 @@ import { readFile, writeFile } from "fs/promises";
 import { NextResponse } from "next/server";
 import path from "path";
 import fs from "fs";
+import { newDate } from "@/common/commonFuc";
 
 export const GET = async (req: Request) => {
   const posts = await getAllPosts();
@@ -17,8 +18,11 @@ export const POST = async (req: Request, res: Response) => {
 
   const posts = await getAllPosts();
 
+  const newId = posts[0].id + 1;
   const arr = [...posts];
-  arr.push(postData);
+
+  const newPostData = { ...postData, ...{ id: newId, date: newDate() } };
+  arr.push(newPostData);
   arr.sort((a, b) => (a.id > b.id ? -1 : 1));
 
   writeFile(filePath, JSON.stringify(arr));

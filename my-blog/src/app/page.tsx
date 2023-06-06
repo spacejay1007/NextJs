@@ -1,6 +1,6 @@
 import CarouselPost from "@/components/main/carouselPost/CarouselPost";
 import MainFeaturedPost from "@/components/main/mainPost/MainFeaturedPost";
-import { MainProfile } from "@/components/main/profile/MainProfile";
+import { MainProfile } from "@/components/main/about/MainProfile";
 
 // const inter = Inter({ subsets: ["latin"] });
 // {/* @ts-expect-error Async Server Component */}

@@ -1,5 +1,5 @@
 import { HomeContactButton } from "@/components/main/eventComponent/HomeContactButton";
-import { MainProfile } from "@/components/main/profile/MainProfile";
+import { MainProfile } from "@/components/main/about/MainProfile";
 import Image from "next/image";
 
 type T_Children = {
