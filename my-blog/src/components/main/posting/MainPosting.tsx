@@ -26,6 +26,7 @@ const MainPosting = (): JSX.Element => {
       )
       .then((res) => {
         console.log(res);
+        setValueState({ title: "", desc: "", category: "" });
       });
   };
 
@@ -43,6 +44,7 @@ const MainPosting = (): JSX.Element => {
         <p style={{ width: 100 }}>title</p>
 
         <Input
+          value={valueState.title}
           styles={{ width: 400, border: "1px solid black" }}
           onChange={(e) => {
             setValueState({
@@ -58,6 +60,7 @@ const MainPosting = (): JSX.Element => {
         <p style={{ width: 100 }}>설명</p>
 
         <Input
+          value={valueState.desc}
           type="text"
           styles={{ width: 400, border: "1px solid black" }}
           onChange={(e) => {
@@ -73,6 +76,7 @@ const MainPosting = (): JSX.Element => {
         <p style={{ width: 100 }}>category</p>
 
         <Input
+          value={valueState.category}
           styles={{ width: 400, border: "1px solid black" }}
           onChange={(e) => {
             setValueState({

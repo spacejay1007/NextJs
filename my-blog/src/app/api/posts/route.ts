@@ -25,18 +25,14 @@ export const POST = async (req: Request, res: Response) => {
   arr.push(newPostData);
   arr.sort((a, b) => (a.id > b.id ? -1 : 1));
 
-  writeFile(filePath, JSON.stringify(arr));
+  writeFile(filePath, JSON.stringify(arr, null, 4));
   return NextResponse.json({ message: "" });
 };
 
 export const DELETE = async (req: Request) => {
-  const { method, json, url } = req;
-  // const { id } = req.body;
-  // console.log(method, json);
-  const postDelete = await req.json();
-  console.log(postDelete);
-  // const postDelete = await req.json();
-  // const filePath = path.join(process.cwd(), "public", "data", "post.json");
+  const postData = await req.json(); // 보내준 JSON 데이터를 받아 데이터를 담아준다.
+  const filePath = path.join(process.cwd(), "public", "data", "post.json");
+  if (!postData) return NextResponse.json({ message: "Missing Data" });
 
   // if (!postDelete) return NextResponse.json({ message: "Missing Data" });
 

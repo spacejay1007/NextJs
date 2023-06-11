@@ -20,6 +20,7 @@ const PostsCard: React.FC<T_Props> = ({
           width={430}
           height={200}
           className="w-full max-h-48"
+          style={{ minHeight: 192 }}
         />
         <div className="flex flex-col items-center p-4">
           {/* date형식은 바로 넣질 못하고 toString() 으로 정의해줘야한다. */}
