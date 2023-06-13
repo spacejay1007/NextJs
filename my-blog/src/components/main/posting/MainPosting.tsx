@@ -2,6 +2,7 @@
 
 import { Button } from "@/common/button/Button";
 import { Input } from "@/common/input/Input";
+import { FileUpload } from "@/common/upload/FileUpload";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -87,6 +88,13 @@ const MainPosting = (): JSX.Element => {
           }}
         />
       </div>
+
+      <div style={{ display: "flex", alignItems: "center", marginTop: 10 }}>
+        <p style={{ width: 100 }}>Image Upload</p>
+
+        <FileUpload text="파일을 올려주세요" />
+      </div>
+
       <div>
         <Button
           onClick={() => postHandler()}
