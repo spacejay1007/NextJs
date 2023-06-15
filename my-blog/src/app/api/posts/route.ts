@@ -30,9 +30,12 @@ export const POST = async (req: Request, res: Response) => {
 };
 
 export const DELETE = async (req: Request) => {
-  const postData = await req.json(); // 보내준 JSON 데이터를 받아 데이터를 담아준다.
+  const { url } = await req; // 보내준 JSON 데이터를 받아 데이터를 담아준다.
+  console.log(url);
+  if (!url) return NextResponse.json({ message: "Missing id" });
   const filePath = path.join(process.cwd(), "public", "data", "post.json");
-  if (!postData) return NextResponse.json({ message: "Missing Data" });
+  const posts = await getAllPosts();
+  console.log(posts);
 
   // if (!postDelete) return NextResponse.json({ message: "Missing Data" });
 

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 type T_UploadProps = {
   text?: string;
@@ -10,34 +10,40 @@ export const FileUpload: React.FC<T_UploadProps> = ({
   onChange,
 }): JSX.Element => {
   const inputRef = useRef<HTMLInputElement>(null);
+  // 처음에는 보낸 텍스트 이름 파일 올리면 File이름으로
+  const [fileName, setFileName] = useState<JSX.Element | string>(
+    text ? text : ""
+  );
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files ? e.target.files[0] : null;
-    console.log(files);
+    console.log(files?.name);
+    // 파일명을 text에서 받아온다
+    if (files && files.name) setFileName(files.name);
     // console.log(e.target.files);
   };
   return (
     <div
       className="upload__box"
+      style={{ width: "400px" }}
       onClick={(e) => {
         e.stopPropagation();
         inputRef.current?.click();
       }}
     >
-      <label
+      <div
         style={{
-          marginTop: 30,
           backgroundColor: "#5b975b",
           color: "#fff",
-          textAlign: "center",
-          padding: "10px 0",
-          width: "65%",
+          padding: "10px",
+          width: "100%",
           borderRadius: 6,
+          textAlign: "center",
           cursor: "pointer",
         }}
       >
-        {text ? text : ""}
-      </label>
+        {fileName ? fileName : ""}
+      </div>
 
       <input
         ref={inputRef}

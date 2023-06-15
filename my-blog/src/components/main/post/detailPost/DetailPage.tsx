@@ -2,6 +2,7 @@
 import { T_Post } from "@/service/post";
 import React from "react";
 import { PrevNext } from "./PrevNext";
+import axios from "axios";
 
 export const DetailPage = async ({
   post,
@@ -11,20 +12,11 @@ export const DetailPage = async ({
   prevNextPosts: { prev: T_Post; next: T_Post };
 }) => {
   const deleteHandler = async (id: number) => {
-    fetch("/api/posts", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ id }),
-    }).then((res) => {
+    await axios.delete(`/api/posts/${id}`).then((res) => {
       console.log(res);
-      if (res.ok) {
-        console.log(res.json());
-        return res.json();
-      }
     });
   };
+  console.log(post.id);
 
   return (
     <div>
