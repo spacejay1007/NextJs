@@ -29,15 +29,18 @@ export const POST = async (req: Request, res: Response) => {
   return NextResponse.json({ message: "" });
 };
 
-export const DELETE = async (req: Request) => {
-  const { url } = await req; // 보내준 JSON 데이터를 받아 데이터를 담아준다.
-  console.log(url);
-  if (!url) return NextResponse.json({ message: "Missing id" });
-  const filePath = path.join(process.cwd(), "public", "data", "post.json");
-  const posts = await getAllPosts();
-  console.log(posts);
+// export const DELETE = async (req: Request) => {
+//   const data = await req.json(); // 보내준 JSON 데이터를 받아 데이터를 담아준다.
+//   // console.log(body);
+//   // console.log(url, json().then());
+//   if (!data) return NextResponse.json({ message: "Missing id" });
+//   console.log(data);
 
-  // if (!postDelete) return NextResponse.json({ message: "Missing Data" });
+//   const filePath = path.join(process.cwd(), "public", "data", "post.json");
+//   const posts = await getAllPosts();
+//   // console.log(posts);
 
-  return NextResponse.json({ message: "" });
-};
+//   // if (!postDelete) return NextResponse.json({ message: "Missing Data" });
+
+//   return NextResponse.json({ message: "" });
+// };

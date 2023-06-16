@@ -1,6 +1,7 @@
 "use client";
 import { T_Post } from "@/service/post";
 import React from "react";
+import { useRouter, redirect } from "next/navigation";
 import { PrevNext } from "./PrevNext";
 import axios from "axios";
 
@@ -11,12 +12,16 @@ export const DetailPage = async ({
   post: T_Post;
   prevNextPosts: { prev: T_Post; next: T_Post };
 }) => {
+  const router = useRouter();
+
   const deleteHandler = async (id: number) => {
     await axios.delete(`/api/posts/${id}`).then((res) => {
       console.log(res);
+      if (res.status === 200) {
+        router.push("/");
+      }
     });
   };
-  console.log(post.id);
 
   return (
     <div>
