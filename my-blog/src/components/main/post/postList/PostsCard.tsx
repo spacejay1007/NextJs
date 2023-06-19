@@ -2,6 +2,7 @@
 import { T_Post } from "@/service/post";
 import Image from "next/image";
 import Link from "next/link";
+import NoImg from "../../../../../public/img/not_img.jpg";
 
 type T_Props = {
   item: T_Post;
@@ -15,7 +16,7 @@ const PostsCard: React.FC<T_Props> = ({
     <Link href={`/posts/${id}`} key={id} className="">
       <article className="rounded-md overflow-hidden shadow-lg  ">
         <Image
-          src={`/img/${image}`}
+          src={!!image ? `/img/${image}` : NoImg}
           alt="image"
           width={430}
           height={200}

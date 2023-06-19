@@ -17,8 +17,6 @@ export const PrevNext = ({
 }) => {
   const { id, desc, image, title } = post;
 
-  console.log(post, id);
-
   return (
     // <div style={{ width: "50%", border: "1px solid black" }}>
     <>

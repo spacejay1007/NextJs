@@ -47,8 +47,6 @@ export const FileUpload: React.FC<T_UploadProps> = ({
         resolve();
       };
     });
-
-    // console.log(e.target.files);
   };
   return (
     <div

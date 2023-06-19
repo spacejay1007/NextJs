@@ -26,7 +26,6 @@ const MainPosting = (): JSX.Element => {
         }
       )
       .then((res) => {
-        console.log(res);
         setValueState({ title: "", desc: "", category: "" });
       });
   };
@@ -95,11 +94,11 @@ const MainPosting = (): JSX.Element => {
         <FileUpload text="파일을 올려주세요" />
       </div>
 
-      <div>
+      <div style={{ marginTop: 20 }}>
         <Button
           onClick={() => postHandler()}
           text="저장"
-          styles={{ marginTop: 20 }}
+          // styles={{  }}
         ></Button>
       </div>
     </div>
