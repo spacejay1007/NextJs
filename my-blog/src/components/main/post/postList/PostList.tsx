@@ -1,6 +1,6 @@
 "use client";
 import { T_Post } from "@/service/post";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Categories } from "../category/Categories";
 import PostsCard from "./PostsCard";
 
@@ -19,6 +19,12 @@ export const PostList = ({ posts, categories }: Props): JSX.Element => {
 
     return categoryCheck;
   };
+
+  useEffect(() => {
+    postList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="flex m-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-30px min-w-500">

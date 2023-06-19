@@ -15,6 +15,7 @@ const postSlugPage = async ({ params }: Props) => {
     return String(item.id) === params.slug;
   });
 
+  console.log(post, postData);
   return (
     <div>
       {/* @ts-expect-error Async Server Component */}

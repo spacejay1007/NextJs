@@ -1,6 +1,5 @@
 import { Header } from "@/components/header/Header";
 import "./globals.css";
-import Link from "next/link";
 import { Footer } from "@/components/footer/Footer";
 import { Open_Sans } from "next/font/google";
 

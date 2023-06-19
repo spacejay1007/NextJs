@@ -16,9 +16,9 @@ export const DetailPage = async ({
 
   const deleteHandler = async (id: number) => {
     await axios.delete(`/api/posts/${id}`).then((res) => {
-      console.log(res);
       if (res.status === 200) {
-        router.push("/");
+        router.push("/posts");
+        location.reload();
       }
     });
   };
@@ -38,8 +38,17 @@ export const DetailPage = async ({
         </>
       )}
       <div style={{ display: "flex" }}>
-        <PrevNext post={prevNextPosts.prev} type={"prev"} />
-        <PrevNext post={prevNextPosts.next} type={"next"} />
+        {prevNextPosts.prev ? (
+          <PrevNext post={prevNextPosts.prev} type={"prev"} />
+        ) : (
+          <div>넘길 페이지 없음</div>
+        )}
+
+        {prevNextPosts.next ? (
+          <PrevNext post={prevNextPosts.next} type={"next"} />
+        ) : (
+          <div style={{ width: "50%" }}>넘길 페이지 없음</div>
+        )}
       </div>
     </div>
   );

@@ -16,39 +16,46 @@ export const PrevNext = ({
   type: "prev" | "next";
 }) => {
   const { id, desc, image, title } = post;
+
+  console.log(post, id);
+
   return (
     // <div style={{ width: "50%", border: "1px solid black" }}>
     <>
-      <Link
-        href={`/posts/${id}`}
-        style={{ position: "relative", width: "100%" }}
-      >
-        <Image
-          src={`/img/${image}`}
-          alt={title}
-          width={100}
-          height={100}
-          style={{ width: "100%", height: 30, opacity: "40%" }}
-        ></Image>
-        <div
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "100%",
-          }}
+      {post.id === null ? (
+        <div>빈페이지</div>
+      ) : (
+        <Link
+          href={`/posts/${id}`}
+          style={{ position: "relative", width: "100%" }}
         >
-          {type === "prev" && <FaArrowLeft />}
-          <div style={{ width: "100%" }}>
-            <h3>{title}</h3>
-            <p>{desc}</p>
+          <Image
+            src={`/img/${image}`}
+            alt={title}
+            width={100}
+            height={100}
+            style={{ width: "100%", height: 30, opacity: "40%" }}
+          ></Image>
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+            }}
+          >
+            {type === "prev" && <FaArrowLeft />}
+            <div style={{ width: "100%" }}>
+              <h3>{title}</h3>
+              <p>{desc}</p>
+            </div>
+            {type === "next" && <FaArrowRight />}
           </div>
-          {type === "next" && <FaArrowRight />}
-        </div>
-      </Link>
+        </Link>
+      )}
     </>
   );
 };
