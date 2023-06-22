@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { margin, padding } from "../styles/styled";
-import { ErrorToolTip } from "../Tooltip/ErrorTooltip";
+import { ErrorTooltip } from "../Tooltip/ErrorTooltip";
 
 export type Styles = {
   width?: number | string;
@@ -116,7 +116,6 @@ export const Input: React.FC<I_InputProps> = (props): JSX.Element => {
     setChange(value);
     if (props.onChange) props.onChange(e);
   };
-
   return (
     <Container
       {...props.styles}
@@ -130,7 +129,7 @@ export const Input: React.FC<I_InputProps> = (props): JSX.Element => {
         placeholder={props.disabled ? "" : props.placeholder}
         onChange={onChangeHandler}
       />
-      {props.error && <ErrorToolTip text={props.error} />}
+      {props.error && <ErrorTooltip text={props.error} />}
     </Container>
   );
 };

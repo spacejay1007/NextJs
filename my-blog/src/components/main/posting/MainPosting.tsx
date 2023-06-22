@@ -9,11 +9,24 @@ import {
 import axios from "axios";
 import { useState } from "react";
 
+const errorText = {
+  title: "타이틀을 입력해주세요.",
+  desc: "설명을 입력해주세요.",
+  cate: "카테고리를 입력해주세요.",
+};
+
 const MainPosting = (): JSX.Element => {
   const [valueState, setValueState] = useState({
     title: "",
     desc: "",
     category: "",
+  });
+  const [error, setError] = useState<{
+    [key: string]: boolean;
+  }>({
+    title: false,
+    desc: false,
+    cate: false,
   });
   const [upload, setUpload] = useState(uploadInitState);
 
@@ -22,7 +35,10 @@ const MainPosting = (): JSX.Element => {
 
   const valueStateValid = () => {
     for (const key in valueState) {
-      if (valueState[key as keyof typeof valueState] === "") return false;
+      if (valueState[key as keyof typeof valueState] === "") {
+        // setError({key, });
+        return false;
+      }
     }
     return true;
   };
@@ -55,6 +71,7 @@ const MainPosting = (): JSX.Element => {
         <p style={{ width: 100 }}>title</p>
 
         <Input
+          error={errorText.title}
           value={valueState.title}
           styles={{ width: 400, border: "1px solid black" }}
           onChange={(e) => {
