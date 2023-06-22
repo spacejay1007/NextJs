@@ -3,6 +3,11 @@
 import React, { useRef, useState } from "react";
 import { Loading } from "../loading/Loading";
 
+export const uploadInitState = {
+  uploadFile: null,
+  fileError: "",
+};
+
 type T_UploadProps = {
   type?: string;
   text?: string;

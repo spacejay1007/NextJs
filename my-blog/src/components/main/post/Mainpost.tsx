@@ -9,7 +9,6 @@ export const Mainpost = async () => {
   const posts = await getAllPosts();
 
   const dupPosts = [...new Set(posts.map((item: T_Post) => item.category))];
-  console.log("sfsdf");
   return (
     <>
       <PostList posts={posts} categories={dupPosts} />

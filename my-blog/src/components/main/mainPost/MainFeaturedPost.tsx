@@ -4,12 +4,9 @@ import { T_Post, getAllPosts } from "@/service/post";
 import PostList from "./list/PostList";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { Loading } from "@/common/loading/Loading";
+import { Loading } from "@/common/components/loading/Loading";
 
 const MainFeaturedPost = () => {
-  // const posts = await getAllPosts();
-  // const posts = require("../../../../public/data/post.json");
-  // const posts = await getAllPosts();
   const { isLoading, error, data } = useQuery<T_Post[]>({
     queryKey: ["posts"],
     queryFn: () =>

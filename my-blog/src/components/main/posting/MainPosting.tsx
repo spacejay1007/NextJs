@@ -1,10 +1,13 @@
 "use client";
 
-import { Button } from "@/common/button/Button";
-import { Input } from "@/common/input/Input";
-import { FileUpload } from "@/common/upload/FileUpload";
+import { Button } from "@/common/components/button/Button";
+import { Input } from "@/common/components/input/Input";
+import {
+  FileUpload,
+  uploadInitState,
+} from "@/common/components/upload/FileUpload";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const MainPosting = (): JSX.Element => {
   const [valueState, setValueState] = useState({
@@ -12,17 +15,25 @@ const MainPosting = (): JSX.Element => {
     desc: "",
     category: "",
   });
+  const [upload, setUpload] = useState(uploadInitState);
+
+  const postingParams = { valueState };
+  const formData = new FormData();
+
+  const valueStateValid = () => {
+    for (const key in valueState) {
+      if (valueState[key as keyof typeof valueState] === "") return false;
+    }
+    return true;
+  };
   const postHandler = async () => {
-    await axios
-      .post(
-        "/api/posts",
-        JSON.stringify({
-          ...valueState,
-        }),
+    if (!valueStateValid()) return;
+
+    if (valueState)
+      // prettier-ignore
+      await axios.post("/api/posts", JSON.stringify({postingParams}),
         {
-          headers: {
-            "Content-Type": `application/json`,
-          },
+          headers: {"Content-Type": `application/json`},
         }
       )
       .then((res) => {

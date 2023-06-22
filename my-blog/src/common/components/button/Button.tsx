@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { margin } from "../styled";
+import { margin } from "../styles/styled";
 
 export type Styles = {
   width?: number | string;
