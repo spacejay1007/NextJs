@@ -1,9 +1,9 @@
 "use client";
-import { T_Post } from "@/service/post";
 import React from "react";
 import { useRouter, redirect } from "next/navigation";
 import { PrevNext } from "./PrevNext";
 import axios from "axios";
+import { T_Post } from "service/post";
 
 export const DetailPage = async ({
   post,

@@ -1,10 +1,10 @@
 "use client";
 
-import { T_Post, getAllPosts } from "@/service/post";
 import PostList from "./list/PostList";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { Loading } from "@/common/components/loading/Loading";
+import { Loading } from "common/components/loading/Loading";
+import { T_Post } from "service/post";
 
 const MainFeaturedPost = () => {
   const { isLoading, error, data } = useQuery<T_Post[]>({

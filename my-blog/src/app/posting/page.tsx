@@ -1,4 +1,4 @@
-import MainPosting from "@/components/main/posting/MainPosting";
+import MainPosting from "components/main/posting/MainPosting";
 
 const postingPage = () => {
   return (

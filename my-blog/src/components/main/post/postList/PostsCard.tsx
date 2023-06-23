@@ -1,8 +1,8 @@
 "use client ";
-import { T_Post } from "@/service/post";
 import Image from "next/image";
 import Link from "next/link";
 import NoImg from "../../../../../public/img/not_img.jpg";
+import { T_Post } from "service/post";
 
 type T_Props = {
   item: T_Post;

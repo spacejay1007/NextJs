@@ -1,10 +1,10 @@
-import { Header } from "@/components/header/Header";
+import { Header } from "components/header/Header";
 import "./globals.css";
-import { Footer } from "@/components/footer/Footer";
 import { ReactQueryProvider } from "./ReactQueryProvider";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import { Open_Sans } from "next/font/google";
+import { Footer } from "components/footer/Footer";
 
 const inter = Open_Sans({ subsets: ["latin"] });
 

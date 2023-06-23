@@ -1,11 +1,11 @@
 "use client";
-import { T_Post } from "@/service/post";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { T_Post } from "service/post";
 
 export const PrevNext = ({
   post,

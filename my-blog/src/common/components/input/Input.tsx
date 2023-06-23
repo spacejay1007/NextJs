@@ -117,19 +117,21 @@ export const Input: React.FC<I_InputProps> = (props): JSX.Element => {
     if (props.onChange) props.onChange(e);
   };
   return (
-    <Container
-      {...props.styles}
-      disabled={!!props.disabled}
-      className="my_blog__input__ct"
-    >
-      <InputEl
-        type={props.type ? props.type : ""}
-        value={props.value}
-        className="my_blog__input"
-        placeholder={props.disabled ? "" : props.placeholder}
-        onChange={onChangeHandler}
-      />
-      {props.error && <ErrorTooltip text={props.error} />}
-    </Container>
+    <>
+      <Container
+        {...props.styles}
+        disabled={!!props.disabled}
+        className="my_blog__input__ct"
+      >
+        <InputEl
+          type={props.type ? props.type : ""}
+          value={props.value}
+          className="my_blog__input"
+          placeholder={props.disabled ? "" : props.placeholder}
+          onChange={onChangeHandler}
+        />
+        {props.error && <ErrorTooltip text={props.error} />}
+      </Container>
+    </>
   );
 };

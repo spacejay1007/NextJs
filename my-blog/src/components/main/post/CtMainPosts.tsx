@@ -1,5 +1,4 @@
 "use client";
-import { getAllPosts } from "@/service/post";
 import { Mainpost } from "./Mainpost";
 import {
   QueryClient,

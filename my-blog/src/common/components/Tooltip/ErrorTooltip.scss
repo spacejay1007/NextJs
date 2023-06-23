@@ -1,0 +1,31 @@
+// @import "common/scss/common.scss";
+@import "common/scss/common.scss";
+
+.tooltip__container {
+  position: absolute;
+  margin-top: 5px;
+  .tooltip__wrapper {
+    border-radius: 3px;
+    background-color: #333;
+
+    // .arrow {
+    //   content: " ";
+    //   width: 0;
+    //   height: 0;
+    //   top: -6px;
+    //   left: 12px;
+    //   // position: absolute;
+    //   border-left: 4px solid transparent !important;
+    //   border-right: 4px solid transparent !important;
+    //   border-bottom: 7px solid #333;
+    // }
+
+    .tooltip__text {
+      padding: 10px;
+      font-weight: 700;
+      color: white;
+    }
+  }
+}
+
+// @include flex()

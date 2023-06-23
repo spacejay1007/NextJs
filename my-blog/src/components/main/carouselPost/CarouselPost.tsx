@@ -1,5 +1,5 @@
 /* eslint-disable react/no-children-prop */
-import { T_Post, getAllPosts } from "@/service/post";
+import { T_Post, getAllPosts } from "service/post";
 import PostsCard from "../post/postList/PostsCard";
 import MultiCarousel from "./MultiCarousel";
 

@@ -1,4 +1,4 @@
-import { getAllPosts, T_Post } from "@/service/post";
+import { T_Post, getAllPosts } from "service/post";
 import { PostList } from "./postList/PostList";
 
 type Props = {

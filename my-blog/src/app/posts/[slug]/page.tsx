@@ -1,6 +1,5 @@
-import { DetailPage } from "@/components/main/post/detailPost/DetailPage";
-import { PrevNext } from "@/components/main/post/detailPost/PrevNext";
-import { getAllPosts, getNextPrevData, T_Post } from "@/service/post";
+import { DetailPage } from "components/main/post/detailPost/DetailPage";
+import { T_Post, getAllPosts, getNextPrevData } from "service/post";
 
 type Props = {
   params: {
@@ -15,7 +14,6 @@ const postSlugPage = async ({ params }: Props) => {
     return String(item.id) === params.slug;
   });
 
-  console.log(post, postData);
   return (
     <div>
       {/* @ts-expect-error Async Server Component */}

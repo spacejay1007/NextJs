@@ -1,9 +1,8 @@
 // "use client";
-import CarouselPost from "@/components/main/carouselPost/CarouselPost";
-import MainFeaturedPost from "@/components/main/mainPost/MainFeaturedPost";
-import { MainProfile } from "@/components/main/about/MainProfile";
-import { useQuery } from "@tanstack/react-query";
-import { getAllPosts } from "@/service/post";
+
+import { MainProfile } from "components/main/about/MainProfile";
+import CarouselPost from "components/main/carouselPost/CarouselPost";
+import MainFeaturedPost from "components/main/mainPost/MainFeaturedPost";
 
 // {/* @ts-expect-error Async Server Component */}
 
