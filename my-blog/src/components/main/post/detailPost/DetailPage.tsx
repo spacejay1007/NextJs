@@ -4,6 +4,7 @@ import { useRouter, redirect } from "next/navigation";
 import { PrevNext } from "./PrevNext";
 import axios from "axios";
 import { T_Post } from "service/post";
+import { MarkdownViewr } from "./markdown/MarkdownViewr";
 
 export const DetailPage = async ({
   post,
@@ -32,9 +33,10 @@ export const DetailPage = async ({
       </div>
       {post && (
         <>
-          <div>{post.image}</div>
-          <div>{post.title}</div>
-          <div>{post.desc}</div>
+          {/* <div>{post.image}</div> */}
+          {/* <div>{post.title}</div> */}
+          {/* <div>{post.desc}</div> */}
+          <MarkdownViewr content={post.desc} />
         </>
       )}
       <div style={{ display: "flex" }}>
