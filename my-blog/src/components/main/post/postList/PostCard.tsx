@@ -9,19 +9,18 @@ import { Dispatch, SetStateAction, useState } from "react";
 
 type T_Props = {
   item: T_Post & { check: CheckProps };
-  checked: { check: boolean; id: number };
-  setChecked: Dispatch<SetStateAction<{ check: boolean; id: number }>>;
+  handler: Handler;
+  // checked: { check: boolean; id: number };
+  // setChecked: Dispatch<SetStateAction<{ check: boolean; id: number }>>;
 };
 
 const PostCard: React.FC<T_Props> = ({
   item: { category, date, desc, id, image, title, check },
-  checked,
-  setChecked,
+  handler,
+  // checked,
+  // setChecked,
 }): JSX.Element => {
-  // const getPost = await getPosts();
-  // const [postChecked, setPostChecked] = useState(false);
-  // console.log(checked);
-  // const { checked, setChecked } = handler;
+  const { setChecks } = handler;
   return (
     <>
       <div>
@@ -31,7 +30,7 @@ const PostCard: React.FC<T_Props> = ({
           checked={check.checked}
           onChange={(c) => {
             // setPostChecked(c.target.checked);
-            setChecked({ check: c.target.checked, id });
+            setChecks(c.target.checked, id);
             // console.log(checked);
           }}
         />

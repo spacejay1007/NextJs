@@ -16,27 +16,25 @@ type Props = {
 };
 
 export type Handler = {
-  checked: boolean;
-  setChecked: (check: boolean, id: number) => void;
+  checks: { check: boolean; id: number };
+  setChecks: (check: boolean, id: number) => void;
 };
 
 export const PostList = ({ posts, categories }: Props): JSX.Element => {
-  const [checkState, setCheckState] = useState([{ check: false, id: 0 }]);
-  const [data, setData] = useState([]);
-  const [checked, setChecked] = useState({ check: false, id: 0 });
-  const [post, setPost] = useState("All Posts");
-
   const check = { checked: false, id: 0 };
   // const posts: T_Post & { check: CheckProps } = { ...post, check };
   const newPosts = posts.map((item: T_Post) => {
-    if (checked.check) console.log("sfsdf");
-
     return { ...item, check };
   });
 
+  const [data, setData] = useState(newPosts);
+  const [checks, setChecks] = useState({ check: false, id: 0 });
+
+  const [post, setPost] = useState("All Posts");
+
   /** 함수 - 김재용 - */
   const postList = () => {
-    const categoryCheck = newPosts.filter(
+    const categoryCheck = data.filter(
       (item: T_Post & { check: CheckProps }) => item.category === post
     );
     if (post === "All Posts") return newPosts;
@@ -46,18 +44,34 @@ export const PostList = ({ posts, categories }: Props): JSX.Element => {
 
   /** effect - 김재용 - */
   useEffect(() => {
-    // postList();
+    postList();
     // setData([...newPosts])
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const idFiltering = (checked: boolean, filterId: number) => {
+    data.filter((item) => {
+      if (item.id === filterId) {
+        item.check.checked = checked;
+      }
+      item;
+    });
+  };
+
   useEffect(() => {
-    setCheckState([...checkState, checked]);
-    console.log(checkState);
-
+    console.log(idFiltering(checks.check, checks.id));
+    // setCheckState([...checkState, checked]);
+    // console.log(checkState);
+    // if(checks.id === )
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [checked]);
+  }, [checks]);
 
+  const handler: Handler = {
+    checks,
+    setChecks: (check: boolean, id: number) => setChecks({ check, id }),
+  };
+
+  console.log(checks);
   return (
     <>
       <div>여기에 버튼 들어갈거야</div>
@@ -68,8 +82,9 @@ export const PostList = ({ posts, categories }: Props): JSX.Element => {
               <PostCard
                 item={item}
                 key={item.id}
-                checked={checked}
-                setChecked={setChecked}
+                handler={handler}
+                // checked={checked}
+                // setChecked={setChecked}
               />
             );
           })}

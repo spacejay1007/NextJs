@@ -4,13 +4,14 @@ import path from "path";
 import fs from "fs";
 import { getAllPosts } from "service/post";
 import { newDate } from "common/commonFuc";
-// import dbConnect from "lib/db/dbConnect";
+import dbConnect from "lib/db/dbConnect";
+import { connectMongoDB } from "lib/mongo";
 // import Test from "lib/test/test.model";
 
 export const GET = async (req: Request) => {
-  // dbConnect();
   // const testPost = Test;
   // const allTests = await testPost.find({});
+  await connectMongoDB();
 
   const posts = await getAllPosts();
   return NextResponse.json(posts);
@@ -20,7 +21,6 @@ export const GET = async (req: Request) => {
 export const POST = async (req: Request, res: Response) => {
   // dbConnect();
   // const testPost = Test;
-
   const postData = await req.json(); // 보내준 JSON 데이터를 받아 데이터를 담아준다.
   // const testId = await getNextSequenceValue("testId");
 

@@ -68,6 +68,7 @@ async function dbConnect() {
       .connect(`${DB_URI}`)
       .then((mongoose) => mongoose);
   }
+  console.log(cached.connect);
 
   cached.connect = await cached.promise;
   return cached.connect;
