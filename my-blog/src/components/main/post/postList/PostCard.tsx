@@ -4,19 +4,37 @@ import Link from "next/link";
 import NoImg from "../../../../../public/img/not_img.jpg";
 import { T_Post } from "service/post";
 import { Checkbox } from "antd";
+import { CheckProps, Handler } from "./PostList";
+import { Dispatch, SetStateAction, useState } from "react";
 
 type T_Props = {
-  item: T_Post;
+  item: T_Post & { check: CheckProps };
+  checked: { check: boolean; id: number };
+  setChecked: Dispatch<SetStateAction<{ check: boolean; id: number }>>;
 };
 
-const PostsCard: React.FC<T_Props> = ({
-  item: { category, date, desc, id, image, title },
+const PostCard: React.FC<T_Props> = ({
+  item: { category, date, desc, id, image, title, check },
+  checked,
+  setChecked,
 }): JSX.Element => {
   // const getPost = await getPosts();
+  // const [postChecked, setPostChecked] = useState(false);
+  // console.log(checked);
+  // const { checked, setChecked } = handler;
   return (
     <>
       <div>
-        {/* {checks === true && <Checkbox />} */}
+        <Checkbox
+          title={title}
+          // checked={postChecked}
+          checked={check.checked}
+          onChange={(c) => {
+            // setPostChecked(c.target.checked);
+            setChecked({ check: c.target.checked, id });
+            // console.log(checked);
+          }}
+        />
         {/* <CheckBox /> */}
         <Link href={`/posts/${id}`} key={id} className="">
           <article className="rounded-md overflow-hidden shadow-lg  ">
@@ -45,4 +63,4 @@ const PostsCard: React.FC<T_Props> = ({
   );
 };
 
-export default PostsCard;
+export default PostCard;

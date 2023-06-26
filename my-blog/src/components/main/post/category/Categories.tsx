@@ -1,4 +1,3 @@
-import { T_Post } from "@/service/post";
 import React from "react";
 
 type Props = {
