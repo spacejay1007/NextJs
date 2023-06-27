@@ -4,7 +4,7 @@ import { Categories } from "../category/Categories";
 import { T_Post } from "service/post";
 import PostCard from "./PostCard";
 
-export type CheckProps = {
+export type SelectProps = {
   checked: boolean;
   id: number;
 };
@@ -16,28 +16,29 @@ type Props = {
 };
 
 export type Handler = {
-  checks: { check: boolean; id: number };
-  setChecks: (check: boolean, id: number) => void;
+  selected: { check: boolean; id: number };
+  setSelected: (check: boolean, id: number) => void;
+  data: (T_Post & { select: SelectProps })[];
+  setData: (data: (T_Post & { select: SelectProps })[]) => void;
 };
 
 export const PostList = ({ posts, categories }: Props): JSX.Element => {
-  const check = { checked: false, id: 0 };
-  // const posts: T_Post & { check: CheckProps } = { ...post, check };
+  const select = { checked: false, id: 0 };
   const newPosts = posts.map((item: T_Post) => {
-    return { ...item, check };
+    return { ...item, select };
   });
 
   const [data, setData] = useState(newPosts);
-  const [checks, setChecks] = useState({ check: false, id: 0 });
-
+  const [selected, setSelected] = useState({ check: false, id: 0 });
+  const [arr, setArr] = useState<(T_Post & { select: SelectProps })[]>([]);
   const [post, setPost] = useState("All Posts");
 
   /** 함수 - 김재용 - */
   const postList = () => {
     const categoryCheck = data.filter(
-      (item: T_Post & { check: CheckProps }) => item.category === post
+      (item: T_Post & { select: SelectProps }) => item.category === post
     );
-    if (post === "All Posts") return newPosts;
+    if (post === "All Posts") return data;
 
     return categoryCheck;
   };
@@ -45,48 +46,42 @@ export const PostList = ({ posts, categories }: Props): JSX.Element => {
   /** effect - 김재용 - */
   useEffect(() => {
     postList();
-    // setData([...newPosts])
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const idFiltering = (checked: boolean, filterId: number) => {
-    data.filter((item) => {
-      if (item.id === filterId) {
-        item.check.checked = checked;
-      }
-      item;
-    });
-  };
-
   useEffect(() => {
-    console.log(idFiltering(checks.check, checks.id));
-    // setCheckState([...checkState, checked]);
-    // console.log(checkState);
-    // if(checks.id === )
+    // 체크 true 일때에 arr 에 true 인 데이터를 담아준다.
+    if (selected.check) {
+      const trueCheckData = data.filter((item) => item.id === selected.id);
+      // console.log(trueCheckData);
+      setArr([...arr, trueCheckData[0]]);
+      // setArr
+    } else {
+      // 체크 false 일때에 arr 에 true 인 데이터만 남겨준다. false인 데이터 빼주는 작업
+      if (arr.length !== 0) {
+        const falseCheckData = data.filter(
+          (item) => item.select.checked === true
+        );
+        setArr([...falseCheckData]);
+      }
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [checks]);
+  }, [selected]);
 
   const handler: Handler = {
-    checks,
-    setChecks: (check: boolean, id: number) => setChecks({ check, id }),
+    selected,
+    setSelected: (check: boolean, id: number) => setSelected({ check, id }),
+    data,
+    setData: (data: (T_Post & { select: SelectProps })[]) => setData(data),
   };
 
-  console.log(checks);
   return (
     <>
       <div>여기에 버튼 들어갈거야</div>
       <div className="flex m-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-30px min-w-500">
-          {postList().map((item: T_Post & { check: CheckProps }) => {
-            return (
-              <PostCard
-                item={item}
-                key={item.id}
-                handler={handler}
-                // checked={checked}
-                // setChecked={setChecked}
-              />
-            );
+          {postList().map((item: T_Post & { select: SelectProps }) => {
+            return <PostCard item={item} key={item.id} handler={handler} />;
           })}
         </div>
         <Categories categories={categories} setPost={setPost} post={post} />

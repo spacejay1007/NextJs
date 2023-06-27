@@ -4,34 +4,43 @@ import Link from "next/link";
 import NoImg from "../../../../../public/img/not_img.jpg";
 import { T_Post } from "service/post";
 import { Checkbox } from "antd";
-import { CheckProps, Handler } from "./PostList";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Handler, SelectProps } from "./PostList";
 
 type T_Props = {
-  item: T_Post & { check: CheckProps };
+  item: T_Post & { select: SelectProps };
   handler: Handler;
-  // checked: { check: boolean; id: number };
-  // setChecked: Dispatch<SetStateAction<{ check: boolean; id: number }>>;
 };
 
 const PostCard: React.FC<T_Props> = ({
-  item: { category, date, desc, id, image, title, check },
+  item: { category, date, desc, id, image, title, select },
   handler,
-  // checked,
-  // setChecked,
 }): JSX.Element => {
-  const { setChecks } = handler;
+  const { setSelected, data, setData, selected } = handler;
+
+  const checkHandler = (id: number, check: boolean) => {
+    setData(
+      data.map((el) => {
+        if (id === el.id) {
+          return {
+            ...el,
+            select: { ...el.select, checked: check },
+          };
+        }
+        return el;
+      })
+    );
+  };
+
   return (
     <>
       <div>
         <Checkbox
           title={title}
           // checked={postChecked}
-          checked={check.checked}
+          checked={select.checked}
           onChange={(c) => {
-            // setPostChecked(c.target.checked);
-            setChecks(c.target.checked, id);
-            // console.log(checked);
+            setSelected(c.target.checked, id);
+            checkHandler(id, c.target.checked);
           }}
         />
         {/* <CheckBox /> */}
