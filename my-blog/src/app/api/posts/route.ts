@@ -6,6 +6,7 @@ import { getAllPosts } from "service/post";
 import { newDate } from "common/commonFuc";
 import { connect } from "lib/schemas";
 import Post from "lib/schemas/posts";
+import CompoundedSpace from "antd/es/space";
 // import Test from "lib/test/test.model";
 
 export const GET = async (req: Request, res: Response) => {
@@ -20,11 +21,11 @@ export const GET = async (req: Request, res: Response) => {
 
 export const POST = async (req: Request, res: Response) => {
   // const testPost = Test;
+  await connect();
   const postData = await req.json(); // 보내준 JSON 데이터를 받아 데이터를 담아준다.
   if (!postData) return NextResponse.json({ message: "Missing Data" });
 
-  await connect();
-
+  console.log(postData);
   const posts = Post;
   console.log(posts);
 
