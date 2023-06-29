@@ -4,9 +4,10 @@ import path from "path";
 import fs from "fs";
 import { getAllPosts } from "service/post";
 import { newDate } from "common/commonFuc";
-import { connect } from "lib/schemas";
 import Post from "lib/schemas/posts";
 import CompoundedSpace from "antd/es/space";
+import connect from "lib/schemas";
+
 // import Test from "lib/test/test.model";
 
 export const GET = async (req: Request, res: Response) => {
@@ -14,7 +15,7 @@ export const GET = async (req: Request, res: Response) => {
   // const allTests = await testPost.find({});
   // await connectMongoDB();
   await connect();
-
+  // const db = mongoConnect.db();
   // const posts = await getAllPosts();
   return NextResponse.json("");
 };
