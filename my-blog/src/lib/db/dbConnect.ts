@@ -18,42 +18,13 @@ declare const mongoo: {
 
 const {} = process.env;
 const DB_URI = process.env.MONGODB_URI || "";
-// let cached = global.mongoose || "";
 let cached = mongoo || "";
-
-// if (!cached) {
-//   cached = global.mongoose = { conn: null, promise: null };
-// }
-
-// async function dbConnect() {
-//   // if (cached.conn) return cached.conn;
-
-//   mongoose
-//     .connect(process.env.MONGODB_URI || "")
-//     .catch((err) => console.log(err));
-
-//   mongoose.connection.on("error", (err) => {
-//     console.error("mongoDB error", err);
-//   });
-
-//   // if (!cached.promise) {
-//   //   cached.promise = mongoose
-//   //     .set({ debug: true, strictQuery: false })
-//   //     .connect(`${DB_URI}`)
-//   //     .then((mongoose) => mongoose);
-//   // }
-
-//   // cached.conn = await cached.promise;
-//   // return cached.conn;
-// }
 
 if (!cached) {
   cached = { connect: null, promise: null };
 }
 
 async function dbConnect() {
-  // if (cached.conn) return cached.conn;
-
   mongoose
     .connect(process.env.MONGODB_URI || "")
     .catch((err) => console.log(err));
@@ -73,25 +44,5 @@ async function dbConnect() {
   cached.connect = await cached.promise;
   return cached.connect;
 }
-
-// let connection = {
-//   isConnected: true,
-// };
-// export const dbConnect = async (
-//   req: NextApiRequest,
-//   res: NextApiResponse,
-//   next: Function
-// ) => {
-//   // if (ConnectionStates.) {
-//   // return;
-//   // }
-//   const db = await mongoose.connect("mongocb://localhost:27017/jay_db");
-//   // connection.isConnected = db.connections[0].readyState;
-//   // if (!global.mongoose) {
-//   //   global.mongoose = await mongoose.connect(
-//   //     "mongocb://localhost:27017/jay_db"
-//   //   );
-//   // }
-// };
 
 export default dbConnect;

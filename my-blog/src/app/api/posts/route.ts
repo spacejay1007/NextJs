@@ -3,32 +3,42 @@ import { NextResponse } from "next/server";
 import path from "path";
 import fs from "fs";
 import { getAllPosts } from "service/post";
+import db from "lib/db/sqlDb";
 import { newDate } from "common/commonFuc";
-import Post from "lib/schemas/posts";
+// import Post from "lib/schemas/posts";
 import CompoundedSpace from "antd/es/space";
-import connect from "lib/schemas";
-
-// import Test from "lib/test/test.model";
+import excuteQuery from "lib/db/sqlDb";
 
 export const GET = async (req: Request, res: Response) => {
   // const testPost = Test;
   // const allTests = await testPost.find({});
   // await connectMongoDB();
-  await connect();
+  // await connect();
+
+  try {
+    console.log("req nom", req.body);
+    const result = await excuteQuery({
+      query: "INSERT INTO post(content) VALUES(?)",
+      values: "",
+    });
+    console.log("ttt", result);
+  } catch (error) {
+    console.log(error);
+  }
+
   // const db = mongoConnect.db();
-  // const posts = await getAllPosts();
-  return NextResponse.json("");
+  //
+  const posts = await getAllPosts();
+  return NextResponse.json(posts);
 };
 
 export const POST = async (req: Request, res: Response) => {
-  // const testPost = Test;
-  await connect();
   const postData = await req.json(); // 보내준 JSON 데이터를 받아 데이터를 담아준다.
   if (!postData) return NextResponse.json({ message: "Missing Data" });
 
   console.log(postData);
-  const posts = Post;
-  console.log(posts);
+  // const posts = Post;
+  // console.log(posts);
 
   //
   // const postData = await req.json(); // 보내준 JSON 데이터를 받아 데이터를 담아준다.
