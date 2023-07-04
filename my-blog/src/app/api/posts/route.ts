@@ -35,13 +35,14 @@ export const GET = async (req: Request, res: Response) => {
 
 export const POST = async (req: Request, res: Response) => {
   const postData = await req.json(); // 보내준 JSON 데이터를 받아 데이터를 담아준다.
+  console.log(postData);
+  const client = await MongoClient.connect(process.env.MONGODB_URI || "");
   if (!postData) return NextResponse.json({ message: "Missing Data" });
 
   // const posts = Post;
   // console.log(posts);
 
   // mongoDB POST
-  const client = await MongoClient.connect(process.env.MONGODB_URI || "");
   const db = client.db();
 
   const postsCollection = db.collection("posts");
