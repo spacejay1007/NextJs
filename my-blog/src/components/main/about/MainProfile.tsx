@@ -20,7 +20,7 @@ export const MainProfile: React.FC = (): JSX.Element => {
       <div className="text-lg font-bold mt-5">{`Hi, I'm Jay`}</div>
       <div>Front-End engineer</div>
       <div className="text-sm">
-        My Stack : Javascript, TypeScript, React, NextJs
+        My Stack : JavaScript, TypeScript, React, NextJS
       </div>
       <HomeContactButton />
     </div>

@@ -1,0 +1,22 @@
+@import "common/scss/common.scss";
+
+.about__page__wrapper {
+  width: 100%;
+  margin-top: 20px;
+  padding: 5px;
+  border: 1px solid #e6e6e6;
+
+  h1 {
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+
+  .my__profile__wrap {
+    margin-bottom: 10px;
+  }
+  .my__career__wrpper {
+    margin-bottom: 10px;
+  }
+  .my__skill__wrapper {
+  }
+}

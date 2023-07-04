@@ -1,55 +1,25 @@
 "use client ";
 import Image from "next/image";
 import Link from "next/link";
-import NoImg from "../../../../../public/img/not_img.jpg";
+import NoImg from "../../../../public/img/not_img.jpg";
 import { T_Post } from "service/post";
-import { Checkbox } from "antd";
-import { Handler, SelectProps } from "./PostList";
 
 type T_Props = {
-  item: T_Post & { select: SelectProps };
-  handler: Handler;
+  item: T_Post;
 };
 
-const PostCard: React.FC<T_Props> = ({
-  item: { category, date, desc, id, image, title, select },
-  handler,
+const PostsCard: React.FC<T_Props> = ({
+  item: { category, date, desc, id, image, title },
 }): JSX.Element => {
-  const { setSelected, data, setData, selected } = handler;
-
-  const checkHandler = (id: number, check: boolean) => {
-    setData(
-      data.map((el) => {
-        if (id === el.id) {
-          return {
-            ...el,
-            select: { ...el.select, checked: check },
-          };
-        }
-        return el;
-      })
-    );
-  };
-
   return (
     <>
       <div>
-        <Checkbox
-          title={title}
-          // checked={postChecked}
-          checked={select.checked}
-          onChange={(c) => {
-            setSelected(c.target.checked, id);
-            checkHandler(id, c.target.checked);
-          }}
-        />
-        {/* <CheckBox /> */}
         <Link href={`/posts/${id}`} key={id} className="">
-          <article className="rounded-md overflow-hidden shadow-lg  ">
+          <article className="rounded-md overflow-hidden shadow-md hover:shadow-xl">
             <Image
               src={!!image ? `/img/${image}` : NoImg}
               alt="image"
-              width={430}
+              width={300}
               height={200}
               className="w-full max-h-48"
               style={{ minHeight: 192 }}
@@ -71,4 +41,4 @@ const PostCard: React.FC<T_Props> = ({
   );
 };
 
-export default PostCard;
+export default PostsCard;

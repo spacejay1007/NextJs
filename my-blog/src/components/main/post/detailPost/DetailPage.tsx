@@ -49,7 +49,7 @@ export const DetailPage = async ({
         {prevNextPosts.next ? (
           <PrevNext post={prevNextPosts.next} type={"next"} />
         ) : (
-          <div style={{ width: "50%" }}>넘길 페이지 없음</div>
+          <div style={{ width: "50%", height: "100%" }}>넘길 페이지 없음</div>
         )}
       </div>
     </div>

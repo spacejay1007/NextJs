@@ -18,23 +18,17 @@ type T_FormType = {
 
 const MainPosting = (): JSX.Element => {
   // react hook
-  // const [valueState, setValueState] = useState({
-  //   title: "",
-  //   desc: "",
-  //   category: "",
-  // });
-  // const [error, setError] = useState<{
-  //   [key: string]: string;
-  // }>({
-  //   title: "",
-  //   desc: "",
-  //   cate: "",
-  // });
   const [upload, setUpload] = useState(uploadInitState);
 
   // react hook form
-  const { register, setValue, handleSubmit, getValues, formState } =
-    useForm<T_FormType>();
+  const {
+    register,
+    setValue,
+    handleSubmit,
+    getValues,
+    formState,
+    clearErrors,
+  } = useForm<T_FormType>();
 
   // param
   // const postingParams = { ...valueState };
@@ -74,8 +68,12 @@ const MainPosting = (): JSX.Element => {
       )
       .then((res) => {
         setValue( "title", "")
+        setValue( "desc", "")
+        setValue( "category", "")
       });
   };
+
+  console.log(formState.errors);
 
   return (
     <form onSubmit={handleSubmit(postHandler)}>
@@ -98,23 +96,28 @@ const MainPosting = (): JSX.Element => {
             styles={{ width: 400, border: "1px solid black" }}
             onChange={(e) => {
               setValue("title", e.target.value);
+              clearErrors("title");
             }}
           />
         </div>
 
-        {/* <div style={{ display: "flex", alignItems: "center", marginTop: 10 }}>
+        <div style={{ display: "flex", alignItems: "center", marginTop: 10 }}>
           <p style={{ width: 100 }}>설명</p>
 
           <Input
-            value={valueState.desc}
+            // value={valueState.desc}
+            {...register("desc", { required: "설명을 입력해주세요." })}
             type="text"
+            error={formState.errors.desc?.message as string}
             styles={{ width: 400, border: "1px solid black" }}
             onChange={(e) => {
-              setValueState({
-                title: valueState.title,
-                desc: e.target.value,
-                category: valueState.category,
-              });
+              // setValueState({
+              //   title: valueState.title,
+              //   desc: e.target.value,
+              //   category: valueState.category,
+              // });
+              setValue("desc", e.target.value);
+              clearErrors("desc");
             }}
           />
         </div>
@@ -122,17 +125,21 @@ const MainPosting = (): JSX.Element => {
           <p style={{ width: 100 }}>category</p>
 
           <Input
-            value={valueState.category}
+            // value={valueState.category}
+            {...register("category", { required: "카테고리를 입력해주세요." })}
             styles={{ width: 400, border: "1px solid black" }}
+            error={formState.errors.category?.message as string}
             onChange={(e) => {
-              setValueState({
-                title: valueState.title,
-                desc: valueState.desc,
-                category: e.target.value,
-              });
+              // setValueState({
+              //   title: valueState.title,
+              //   desc: valueState.desc,
+              //   category: e.target.value,
+              // });
+              setValue("category", e.target.value);
+              clearErrors("category");
             }}
           />
-        </div> */}
+        </div>
 
         <div style={{ display: "flex", alignItems: "center", marginTop: 10 }}>
           <p style={{ width: 100 }}>Image Upload</p>

@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { T_Post } from "service/post";
+import NoImg from "../../../../../public/img/not_img.jpg";
 
 export const PrevNext = ({
   post,
@@ -28,7 +29,7 @@ export const PrevNext = ({
           style={{ position: "relative", width: "100%" }}
         >
           <Image
-            src={`/img/${image}`}
+            src={image ? `/img/${image}` : NoImg}
             alt={title}
             width={100}
             height={100}

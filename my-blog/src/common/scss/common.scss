@@ -3,3 +3,10 @@
   align-items: $align;
   justify-content: $jutify;
 }
+
+@mixin ellipse {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+}

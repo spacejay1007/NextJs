@@ -19,12 +19,12 @@ const postSlugPage = async ({ params }: Props) => {
   return (
     <div>
       <Image
-        src={!!post ? `/img/${post.image}` : NoImg}
+        src={post && post.image ? `/img/${post.image}` : NoImg}
         alt="image"
-        width={430}
+        width={300}
         height={400}
         className="w-full max-h-48"
-        style={{ minHeight: 400 }}
+        style={{ minHeight: 400, padding: 40 }}
       />
       {/* @ts-expect-error Async Server Component */}
       <DetailPage post={post} prevNextPosts={postData} />

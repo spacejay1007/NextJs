@@ -8,6 +8,7 @@ import { newDate } from "common/commonFuc";
 // import Post from "lib/schemas/posts";
 import CompoundedSpace from "antd/es/space";
 import excuteQuery from "lib/db/sqlDb";
+import { MongoClient } from "mongodb";
 
 export const GET = async (req: Request, res: Response) => {
   // const testPost = Test;
@@ -15,16 +16,16 @@ export const GET = async (req: Request, res: Response) => {
   // await connectMongoDB();
   // await connect();
 
-  try {
-    console.log("req nom", req.body);
-    const result = await excuteQuery({
-      query: "INSERT INTO post(content) VALUES(?)",
-      values: "",
-    });
-    console.log("ttt", result);
-  } catch (error) {
-    console.log(error);
-  }
+  // try {
+  //   console.log("req nom", req.body);
+  //   const result = await excuteQuery({
+  //     query: "INSERT INTO post(content) VALUES(?)",
+  //     values: "",
+  //   });
+  //   console.log("ttt", result);
+  // } catch (error) {
+  //   console.log(error);
+  // }
 
   // const db = mongoConnect.db();
   //
@@ -36,9 +37,17 @@ export const POST = async (req: Request, res: Response) => {
   const postData = await req.json(); // 보내준 JSON 데이터를 받아 데이터를 담아준다.
   if (!postData) return NextResponse.json({ message: "Missing Data" });
 
-  console.log(postData);
   // const posts = Post;
   // console.log(posts);
+
+  // mongoDB POST
+  const client = await MongoClient.connect(process.env.MONGODB_URI || "");
+  const db = client.db();
+
+  const postsCollection = db.collection("posts");
+  const result = await postsCollection.insertOne(postData);
+  console.log(result);
+  client.close();
 
   //
   // const postData = await req.json(); // 보내준 JSON 데이터를 받아 데이터를 담아준다.

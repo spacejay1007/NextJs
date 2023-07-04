@@ -1,0 +1,5 @@
+@import "common/scss/common.scss";
+
+.delete__button__wrapper {
+  @include flex(center, flex-end);
+}

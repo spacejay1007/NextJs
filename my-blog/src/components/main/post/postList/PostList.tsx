@@ -2,7 +2,9 @@
 import React, { useState, useEffect } from "react";
 import { Categories } from "../category/Categories";
 import { T_Post } from "service/post";
-import PostCard from "./PostCard";
+import PostCard from "../../card/PostCard";
+import { Button } from "common/components/button/Button";
+import "./PostList.scss";
 
 export type SelectProps = {
   checked: boolean;
@@ -77,9 +79,14 @@ export const PostList = ({ posts, categories }: Props): JSX.Element => {
 
   return (
     <>
-      <div>여기에 버튼 들어갈거야</div>
+      <div className="delete__button__wrapper">
+        <Button text="삭제"></Button>
+      </div>
       <div className="flex m-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-30px min-w-500">
+        <div
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-30px min-w-500"
+          style={{ minWidth: 1391 }}
+        >
           {postList().map((item: T_Post & { select: SelectProps }) => {
             return <PostCard item={item} key={item.id} handler={handler} />;
           })}

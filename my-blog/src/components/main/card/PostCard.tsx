@@ -1,23 +1,48 @@
 "use client ";
 import Image from "next/image";
 import Link from "next/link";
-import NoImg from "../../../../../public/img/not_img.jpg";
+import NoImg from "../../../../public/img/not_img.jpg";
 import { T_Post } from "service/post";
 import { Checkbox } from "antd";
+import { Handler, SelectProps } from "../post/postList/PostList";
 
 type T_Props = {
-  item: T_Post;
+  item: T_Post & { select: SelectProps };
+  handler: Handler;
 };
 
-const PostsCard: React.FC<T_Props> = ({
-  item: { category, date, desc, id, image, title },
+/** check데이터가 있는 포스트 카드 - 김재용 - */
+const PostCard: React.FC<T_Props> = ({
+  item: { category, date, desc, id, image, title, select },
+  handler,
 }): JSX.Element => {
-  // const getPost = await getPosts();
+  const { setSelected, data, setData, selected } = handler;
+
+  const checkHandler = (id: number, check: boolean) => {
+    setData(
+      data.map((el) => {
+        if (id === el.id) {
+          return {
+            ...el,
+            select: { ...el.select, checked: check },
+          };
+        }
+        return el;
+      })
+    );
+  };
+
   return (
     <>
       <div>
-        {/* {checks === true && <Checkbox />} */}
-        {/* <CheckBox /> */}
+        <Checkbox
+          title={title}
+          checked={select.checked}
+          onChange={(c) => {
+            setSelected(c.target.checked, id);
+            checkHandler(id, c.target.checked);
+          }}
+        />
         <Link href={`/posts/${id}`} key={id} className="">
           <article className="rounded-md overflow-hidden shadow-lg  ">
             <Image
@@ -45,4 +70,4 @@ const PostsCard: React.FC<T_Props> = ({
   );
 };
 
-export default PostsCard;
+export default PostCard;

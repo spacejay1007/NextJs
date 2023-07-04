@@ -1,6 +1,6 @@
 /* eslint-disable react/no-children-prop */
 import { T_Post, getAllPosts } from "service/post";
-import PostsCard from "../post/postList/PostsCard";
+import PostsCard from "../card/PostsCard";
 import MultiCarousel from "./MultiCarousel";
 
 const CarouselPost = async () => {
@@ -8,7 +8,7 @@ const CarouselPost = async () => {
   const mapPost = posts.map((item: T_Post) => item.title);
 
   return (
-    <section>
+    <section className="my-4">
       <h2>You May Like</h2>
       <MultiCarousel>
         {posts.map((post) => (
