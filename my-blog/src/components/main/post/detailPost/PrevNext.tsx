@@ -2,7 +2,6 @@
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import React from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { T_Post } from "service/post";
@@ -26,28 +25,18 @@ export const PrevNext = ({
       ) : (
         <Link
           href={`/posts/${id}`}
-          style={{ position: "relative", width: "100%" }}
+          // style={{ position: "relative", width: "100%" }}
+          className={`prev__next__link__button ${type}`}
         >
           <Image
             src={image ? `/img/${image}` : NoImg}
             alt={title}
             width={100}
             height={100}
-            style={{ width: "100%", height: 30, opacity: "40%" }}
           ></Image>
-          <div
-            style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "100%",
-            }}
-          >
+          <div className={`prev__next__text__inner__wrapper ${type}`}>
             {type === "prev" && <FaArrowLeft />}
-            <div style={{ width: "100%" }}>
+            <div>
               <h3>{title}</h3>
               <p>{desc}</p>
             </div>

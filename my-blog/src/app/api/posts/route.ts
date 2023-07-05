@@ -3,52 +3,85 @@ import { NextResponse } from "next/server";
 import path from "path";
 import fs from "fs";
 import { getAllPosts } from "service/post";
-import db from "lib/db/sqlDb";
-import { newDate } from "common/commonFuc";
 // import Post from "lib/schemas/posts";
-import CompoundedSpace from "antd/es/space";
-import excuteQuery from "lib/db/sqlDb";
 import { MongoClient } from "mongodb";
+import { QueryError, createConnection } from "mysql2";
+import { NextApiRequest, NextApiResponse } from "next";
+import { posts } from "lib/schemas/posts";
 
 export const GET = async (req: Request, res: Response) => {
   // const testPost = Test;
-  // const allTests = await testPost.find({});
+  // const allTests = await posts.findAll({});
   // await connectMongoDB();
   // await connect();
 
-  // try {
-  //   console.log("req nom", req.body);
-  //   const result = await excuteQuery({
-  //     query: "INSERT INTO post(content) VALUES(?)",
-  //     values: "",
-  //   });
-  //   console.log("ttt", result);
-  // } catch (error) {
-  //   console.log(error);
-  // }
-
   // const db = mongoConnect.db();
   //
-  const posts = await getAllPosts();
-  return NextResponse.json(posts);
+  const sqlConnect = await createConnection({
+    host: "localhost",
+    // host: process.env.MYSQL_HOST,
+    // port: process.env.MYSQL_PORT,
+    user: process.env.SQL_USER,
+    password: process.env.SQL_PW,
+    database: "nodejs",
+  });
+  // const queryString =
+
+  sqlConnect.query(
+    "SELECT * FROM nodejs.posts",
+    (err: QueryError, result: any) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(result);
+        // NextResponse.json(result);
+        sqlConnect.end();
+        return NextResponse.json(result);
+      }
+    }
+  );
+  // const posts = await getAllPosts();
+  // console.log(postsss);
+  return NextResponse.json("");
 };
 
 export const POST = async (req: Request, res: Response) => {
   const postData = await req.json(); // 보내준 JSON 데이터를 받아 데이터를 담아준다.
-  console.log(postData);
-  const client = await MongoClient.connect(process.env.MONGODB_URI || "");
+  // const client = await MongoClient.connect(process.env.MONGODB_URI || "");
   if (!postData) return NextResponse.json({ message: "Missing Data" });
 
   // const posts = Post;
   // console.log(posts);
 
   // mongoDB POST
+  const client = await MongoClient.connect(process.env.MONGODB_URI || "");
   const db = client.db();
 
   const postsCollection = db.collection("posts");
   const result = await postsCollection.insertOne(postData);
   console.log(result);
   client.close();
+
+  // // MySQL POST
+  // const sqlConnect = await createConnection({
+  //   host: "localhost",
+  //   // host: process.env.MYSQL_HOST,
+  //   // port: process.env.MYSQL_PORT,
+  //   user: process.env.SQL_USER,
+  //   password: process.env.SQL_PW,
+  //   database: "nodejs",
+  // });
+
+  // sqlConnect.query("SELECT * FROM posts", function (err: any, result: any) {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     // console.log(result);
+  //     // res.json(result);
+  //   }
+  // });
+
+  // const sqlDb = sqlConnect.query
 
   //
   // const postData = await req.json(); // 보내준 JSON 데이터를 받아 데이터를 담아준다.
