@@ -1,10 +1,11 @@
 "use client";
 import React from "react";
-import { useRouter, redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { PrevNext } from "./PrevNext";
 import axios from "axios";
 import { T_Post } from "service/post";
 import { MarkdownViewr } from "./markdown/MarkdownViewr";
+import "./DetailPage.scss";
 
 export const DetailPage = async ({
   post,
@@ -25,25 +26,28 @@ export const DetailPage = async ({
   };
 
   return (
-    <div>
-      <div>
+    <div className="post__detail__wrapper">
+      <div className="post__detail__btn__wrap">
         <button onClick={() => deleteHandler(post.id as number)}>
           post삭제
         </button>
       </div>
-      {post && (
-        <>
-          {/* <div>{post.image}</div> */}
-          {/* <div>{post.title}</div> */}
-          {/* <div>{post.desc}</div> */}
-          <MarkdownViewr content={post.desc} />
-        </>
-      )}
-      <div style={{ display: "flex" }}>
+      <div className="post__detail__text__wrap">
+        {post && (
+          <>
+            {/* <div>{post.image}</div> */}
+            {/* <div>{post.title}</div> */}
+            {/* <div>{post.desc}</div> */}
+            <MarkdownViewr content={post.desc} />
+          </>
+        )}
+      </div>
+
+      <div className="post__detail__prev__next__btn__wrap">
         {prevNextPosts.prev ? (
           <PrevNext post={prevNextPosts.prev} type={"prev"} />
         ) : (
-          <div>넘길 페이지 없음</div>
+          <div className="prev__btn__no_data">넘길 페이지 없음</div>
         )}
 
         {prevNextPosts.next ? (
